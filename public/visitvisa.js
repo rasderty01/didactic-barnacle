@@ -1,5 +1,5 @@
 const url =
-  "https://script.google.com/macros/s/AKfycbwxHdUMC_OHPpFFMOCbArYwmGfm9VBUygw1ApzspJdQpCsNTwZJaGNY5Eo9ZvPsbazmrw/exec";
+  "https://script.google.com/macros/s/AKfycbziCF9K03FS4b7FnlDGgmRY816iVTKYMFHSmgClcHwL1IB0GuOh8heOkhRsQsn-cRggtQ/exec";
 
 document.addEventListener("DOMContentLoaded", function () {
   var form1 = document.getElementById("VV"); //visitvisa
@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then((response) => {
           if (response.ok) {
             formAlerts.innerHTML =
-              "<div class='bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative' role='alert'>Sent Successfully.</div>";
+              "<div class='bg-green-100 border-2 border-green-400 text-green-700 px-4 py-3 rounded relative' role='alert'>Sent Successfully.</div>";
           } else {
             formAlerts.innerHTML =
               "<div class='alert alert-danger'>Error: " +
@@ -123,6 +123,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const pcode = fiance.elements["pcode"].value;
     const amrital = fiance.elements["AMaritalStatus"].value;
     const smrital = fiance.elements["SMaritalStatus"].value;
+    const financialrequirement = document.querySelector(
+      'input[name="financialrequirement"]:checked'
+    ).value;
 
     // Perform validation for Form 2
     const formAlerts = document.getElementById("form_alerts");
@@ -131,6 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ).value;
     const eligibility =
       metSponsor === "Yes" &&
+      financialrequirement === "Yes" &&
       (amrital === "Single" || amrital === "Divorce/Anulled") &&
       (smrital === "Single" || smrital === "Divorce/Anulled") &&
       (sponsor === "Employment" ||
@@ -174,7 +178,9 @@ document.addEventListener("DOMContentLoaded", function () {
       formData.append("amrital", amrital);
       formData.append("smrital", smrital);
       formData.append("metSponsor", metSponsor);
+      formData.append("financialrequirement", financialrequirement);
       formData.append("sponsor-income", sponsor);
+
       // Send data to the Google Apps Script
       const options = {
         method: "post",
@@ -216,9 +222,16 @@ document.addEventListener("DOMContentLoaded", function () {
     const pnumber = spouse.elements["pnumber"].value;
     const address = spouse.elements["address"].value;
     const pcode = spouse.elements["pcode"].value;
+    const financialrequirement = document.querySelector(
+      'input[name="financialrequirement"]:checked'
+    ).value;
+    const pom1 = spouse.elements["pofmarriage"].value;
+    const dom1 = spouse.elements["dofmarriage"].value;
+    const benefits3 = spouse.elements["benefits-type"].value;
     // Perform validation for Form 3
     const formAlerts = document.getElementById("form_alerts");
-    const eligibility = true;
+
+    const eligibility = financialrequirement === "Yes";
 
     console.log(eligibility);
 
@@ -243,6 +256,10 @@ document.addEventListener("DOMContentLoaded", function () {
       formData.append("otherCountry", otherCountryValue);
 
       formData.append("pcode", pcode);
+      formData.append("financialrequirement", financialrequirement);
+      formData.append("benefits", benefits3);
+      formData.append("pom", pom1);
+      formData.append("dom", dom1);
       formData.append("sponsor-income", sponsor);
       // Send data to the Google Apps Script
       const options = {
@@ -376,6 +393,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const pcode = umarried.elements["pcode"].value;
     const amrital = umarried.elements["AMaritalStatus"].value;
     const smrital = umarried.elements["SMaritalStatus"].value;
+    const financialrequirement = document.querySelector(
+      'input[name="financialrequirement"]:checked'
+    ).value;
     // Perform validation for Form 5
     const formAlerts = document.getElementById("form_alerts");
     const metSponsor = document.querySelector(
@@ -384,10 +404,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const lived = document.querySelector('input[name="lived"]:checked').value;
     const sponsorSourceOfIncome = umarried.elements["sponsor-income"].value;
     const eligibility =
+      financialrequirement === "Yes" &&
       lived === "Yes" &&
       metSponsor === "Yes" &&
-      (amrital === "Single" || amrital === "Divorce/Anulled") &&
-      (smrital === "Single" || smrital === "Divorce/Anulled") &&
       (sponsorSourceOfIncome === "Employment" ||
         sponsorSourceOfIncome === "Pension" ||
         sponsorSourceOfIncome === "Business" ||
@@ -420,6 +439,7 @@ document.addEventListener("DOMContentLoaded", function () {
       formData.append("metSponsor", metSponsor);
       formData.append("lived", lived);
       formData.append("smrital", smrital);
+      formData.append("financialrequirement", financialrequirement);
       formData.append("sponsor-income", sponsorSourceOfIncome);
 
       // Send data to the Google Apps Script
@@ -451,11 +471,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-function handleCountryChange() {
-  const countrySelect = document.getElementById("country");
-  const otherCountryContainer = document.getElementById(
-    "otherCountryContainer"
-  );
+function handleCountryChange(event, containerId) {
+  const countrySelect = event.target;
+  const otherCountryContainer = document.getElementById(containerId);
 
   if (countrySelect.value === "Other") {
     otherCountryContainer.classList.remove("hidden");
@@ -463,3 +481,58 @@ function handleCountryChange() {
     otherCountryContainer.classList.add("hidden");
   }
 }
+
+function benefitchange(event, containerId) {
+  const countrySelect1 = event.target;
+  const otherCountryContainer1 = document.getElementById(containerId);
+
+  if (countrySelect1.value === "On Benefits") {
+    otherCountryContainer1.classList.remove("hidden");
+  } else {
+    otherCountryContainer1.classList.add("hidden");
+  }
+}
+
+const benefits = document.getElementById("sponsor-income1");
+const benefits1 = document.getElementById("btf");
+benefits.addEventListener("change", (event) => {
+  benefitchange(event, "btf");
+});
+
+const countrySelect1 = document.getElementById("country");
+const otherCountryContainer1 = document.getElementById("otherCountryContainer");
+countrySelect1.addEventListener("change", (event) => {
+  handleCountryChange(event, "otherCountryContainer");
+});
+
+const countrySelect2 = document.getElementById("country2");
+const otherCountryContainer2 = document.getElementById(
+  "otherCountryContainer2"
+);
+countrySelect2.addEventListener("change", (event) => {
+  handleCountryChange(event, "otherCountryContainer2");
+});
+
+const countrySelect3 = document.getElementById("country3");
+const otherCountryContainer3 = document.getElementById(
+  "otherCountryContainer3"
+);
+countrySelect3.addEventListener("change", (event) => {
+  handleCountryChange(event, "otherCountryContainer3");
+});
+
+const countrySelect4 = document.getElementById("country4");
+const otherCountryContainer4 = document.getElementById(
+  "otherCountryContainer4"
+);
+countrySelect4.addEventListener("change", (event) => {
+  handleCountryChange(event, "otherCountryContainer4");
+});
+
+const countrySelect5 = document.getElementById("country5");
+const otherCountryContainer5 = document.getElementById(
+  "otherCountryContainer5"
+);
+countrySelect5.addEventListener("change", (event) => {
+  handleCountryChange(event, "otherCountryContainer5");
+});

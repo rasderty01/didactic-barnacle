@@ -1,1029 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.17/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap"
-      rel="stylesheet"
-    />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.17/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
     <title>MGiUK Visa Application</title>
     <script>
       function showForm() {
-        const visaType = document.getElementById("choosevisatype").value;
-        const forms = document.getElementsByClassName("container-1");
-        const loading = document.getElementById("loading");
-
+        const visaType = document.getElementById('choosevisatype').value;
+        const forms = document.getElementsByClassName('container-1');
+        const loading = document.getElementById('loading');
+    
         // Hide all forms and display the loading icon
         for (let i = 0; i < forms.length; i++) {
-          forms[i].style.display = "none";
+          forms[i].style.display = 'none';
         }
-        loading.style.display = "block";
-
+        loading.style.display = 'block';
+    
         // Delay showing the selected form for 1 second (adjust as needed)
-        setTimeout(function () {
+        setTimeout(function() {
           // Hide the loading icon and display the selected form
-          loading.style.display = "none";
-          document.getElementById(visaType).style.display = "block";
+          loading.style.display = 'none';
+          document.getElementById(visaType).style.display = 'block';
         }, 1000);
       }
-    </script>
-  </head>
+      </script>
 
-  <div
-    id="success-message"
-    class="relative flex hidden flex-col rounded border border-green-400 bg-green-100 px-4 py-3 text-green-700"
-    role="alert"
-  >
-    Sent Successfully.
-  </div>
 
-  <body class="font-montserrat font-open-sans font-sans">
+</head>
+
+
+<div id="form_alerts">
+
+<body class="font-sans font-montserrat font-open-sans">
     <!-- visit visa main -->
+    
+    <div class="container mx-auto px-4 py-5 max-w-4xl bg-white-100" >
+        <label class="block font-bold text-gray-700 mb-2" for="visa-type">Visa Application:</label>
+        <select id="choosevisatype" name="choosevisatype" onchange="showForm()"class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="vtype">
+          <option value="">Select a Visa type</option>
+          <option value="Visit-Visa">Visit Visa</option>
+          <option value="Fiance-Visa">Fiance Visa</option>
+          <option value="Spouse-Visa">Spouse Visa</option>
+          <option value="Married-Visit-Visa">Married Visit Visa</option>
+          <option value="Unmarried-Visit-Visa">Unmarried Visit Visa</option>
+        </select>
+      
 
-    <div class="bg-white-100 container mx-auto max-w-4xl px-4 py-5">
-      <label class="mb-2 block font-bold text-gray-700" for="visa-type"
-        >Visa Application:</label
-      >
-      <select
-        id="choosevisatype"
-        name="choosevisatype"
-        onchange="showForm()"
-        class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
-        id="vtype"
-      >
-        <option value="">Select a Visa type</option>
-        <option value="Visit-Visa">Visit Visa</option>
-        <option value="Fiance-Visa">Fiance Visa</option>
-        <option value="Spouse-Visa">Spouse Visa</option>
-        <option value="Married-Visit-Visa">Married Visit Visa</option>
-        <option value="Unmarried-Visit-Visa">Unmarried Visit Visa</option>
-      </select>
-
-      <div
-        id="loading"
-        class="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-md"
-        style="display: none"
-      >
-        <div class="flex h-screen w-full items-center justify-center">
-          <div
-            class="to-white-500 flex h-14 w-14 animate-spin items-center justify-center rounded-full bg-gradient-to-tr from-yellow-400"
-          >
-            <div class="h-9 w-9 rounded-full"></div>
+        <div id="loading" class="fixed inset-0 z-50 flex justify-center items-center backdrop-blur-md" style="display: none;">
+          <div class="flex h-screen w-full items-center justify-center">
+            <div class="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-tr from-yellow-400 to-white-500 animate-spin">
+              <div class="h-9 w-9 rounded-full"></div>
+            </div>
           </div>
         </div>
-      </div>
+        
 
-      <!-- visit visa -->
-      <div
-        id="Visit-Visa"
-        class="container-1 mx-auto max-w-fit px-4 py-5"
-        style="display: none"
-      >
-        <h1 class="mb-5 text-2xl font-bold">Visit Visa Application</h1>
+
+<!-- visit visa -->
+    <div id="Visit-Visa" class="container-1 max-w-fit mx-auto px-4 py-5" style="display: none;">
+        <h1 class="text-2xl font-bold mb-5">Visit Visa Application</h1>
         <form id="VV" name="visa-form">
-          <div class="flex flex-col gap-4">
-            <div>
-              <label class="mb-2 block font-bold text-gray-700" for="last-name"
-                >Last Name:</label
-              >
-              <input
-                class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
-                id="lname"
-                name="lname"
-                type="text"
-                placeholder="Enter last name"
-              />
-            </div>
-            <div>
-              <label class="mb-2 block font-bold text-gray-700" for="first-name"
-                >First Name:</label
-              >
-              <input
-                class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
-                id="fname"
-                name="fname"
-                type="text"
-                placeholder="Enter first name"
-              />
-            </div>
-            <div>
-              <label class="mb-2 block font-bold text-gray-700" for="email"
-                >Email:</label
-              >
-              <input
-                class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
-                id="email"
-                name="email"
-                type="email"
-                placeholder="Enter email"
-              />
-            </div>
-            <div>
-              <label
-                class="mb-2 block font-bold text-gray-700"
-                for="phone-number"
-                >Phone Number (WhatsApp):</label
-              >
-              <input
-                class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
-                id="pnumber"
-                name="pnumber"
-                type="text"
-                placeholder="Enter phone number"
-              />
-            </div>
-
-            <div class="col-span-2">
-              <label class="mb-2 block font-bold text-gray-700" for="address"
-                >Address:</label
-              >
-              <textarea
-                class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
-                id="address"
-                name="address"
-                placeholder="Enter address"
-              ></textarea>
-            </div>
-
-            <div class="flex flex-col">
-              <label class="mb-2 block font-bold text-gray-700" for="country"
-                >Country:</label
-              >
-              <select
-                class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
-                id="country"
-                name="country"
-                onchange="handleCountryChange()"
-              >
-                <option value="">Select a country</option>
-                <option value="Philippines">Philippines</option>
-                <option value="United Kingdom">United Kingdom</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
-
-            <div class="mt-4 flex hidden flex-col" id="otherCountryContainer">
-              <label
-                class="mb-2 block font-bold text-gray-700"
-                for="otherCountry"
-                >Other Country:</label
-              >
-              <input
-                class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
-                type="text"
-                id="otherCountry"
-                name="otherCountry"
-                placeholder="Enter Country name"
-              />
-            </div>
-            <div>
-              <label
-                class="mb-2 block font-bold text-gray-700"
-                for="postal-code"
-                >Postal Code:</label
-              >
-              <input
-                class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
-                id="pcode"
-                name="pcode"
-                type="text"
-                placeholder="Enter postal code"
-              />
-            </div>
-
-            <div class="mb-4">
-              <label class="mb-2 block text-sm font-bold text-gray-700"
-                >Applicant's Relationship with the Sponsor</label
-              >
-              <select
-                id="relationship"
-                name="relationship"
-                class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
-              >
-                <option value="">Select an option</option>
-                <option value="Family">Family</option>
-                <option value="Partner">Partner</option>
-                <option value="Friends">Friends</option>
-                <option value="Other">Other</option>
-              </select>
-              <!-- Add javascript from index.html -->
-            </div>
-
-            <div class="mb-4">
-              <span class="text-gray-700"
-                >Did the Applicant already meet the Sponsor in person?</span
-              >
-              <div class="mb-2">
-                <label class="inline-flex items-center">
-                  <input
-                    type="radio"
-                    class="form-radio"
-                    name="metSponsor"
-                    value="Yes"
-                  />
-                  <span class="ml-2">Yes</span>
-                </label>
-                <label class="ml-6 inline-flex items-center">
-                  <input
-                    type="radio"
-                    class="form-radio"
-                    name="metSponsor"
-                    value="No"
-                  />
-                  <span class="ml-2">No</span>
-                </label>
-              </div>
-            </div>
-
-            <div class="mb-4">
-              <label class="mb-2 block text-sm font-bold text-gray-700"
-                >Applicant's Source of Income</label
-              >
-              <select
-                id="applicant-income"
-                name="applicant-income"
-                class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
-              >
-                <option value="">Select an option</option>
-                <option value="Employment (more than a year)">
-                  Employment (more than a year)
-                </option>
-                <option value="Employment (less than a year)">
-                  Employment (less than a year)
-                </option>
-                <option value="Business (more than a year)">
-                  Business (more than a year)
-                </option>
-                <option value="Business (less than a year)">
-                  Business (less than a year)
-                </option>
-              </select>
-            </div>
-
-            <div class="mb-4">
-              <label class="mb-2 block text-sm font-bold text-gray-700"
-                >Sponsor's Source of Income</label
-              >
-              <select
-                id="sponsor-income"
-                name="sponsor-income"
-                class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
-              >
-                <option value="">Select an option</option>
-                <option value="Pension">Pension</option>
-                <option value="Employment">Employment</option>
-                <option value="Business">Business</option>
-                <option value="On Benefits">On Benefits</option>
-              </select>
-            </div>
-
-            <div class="mb-4">
-              <label class="mb-2 block text-sm font-bold text-gray-700"
-                >Salary Range (If applying without a sponsor)</label
-              >
-              <input
-                id="salary"
-                name="salary"
-                class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
-                type="number"
-                placeholder="Enter your salary range"
-              />
-            </div>
-            <div class="col-span-2 mb-4">
-              <button
-                class="focus:shadow-outline rounded bg-blue-500 py-2 px-4 font-bold text-white hover:bg-blue-50 focus:outline-none"
-                type="submit"
-                id="submit"
-              >
-                Submit
-              </button>
-            </div>
-          </div>
-        </form>
-        <!-- fiance visa -->
-        <div
-          id="Fiance-Visa"
-          class="container-1 mx-auto max-w-fit px-4 py-5"
-          style="display: none"
-        >
-          <h1 class="mb-5 text-2xl font-bold">Fiance Visa Application</h1>
-          <form id="FV" name="visa-form">
             <div class="flex flex-col gap-4">
-              <div>
-                <label
-                  class="mb-2 block font-bold text-gray-700"
-                  for="last-name"
-                  >Last Name:</label
-                >
-                <input
-                  class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
-                  id="lname"
-                  name="lname"
-                  type="text"
-                  placeholder="Enter last name"
-                />
-              </div>
-              <div>
-                <label
-                  class="mb-2 block font-bold text-gray-700"
-                  for="first-name"
-                  >First Name:</label
-                >
-                <input
-                  class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
-                  id="fname"
-                  name="fname"
-                  type="text"
-                  placeholder="Enter first name"
-                />
-              </div>
-              <div>
-                <label class="mb-2 block font-bold text-gray-700" for="email"
-                  >Email:</label
-                >
-                <input
-                  class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="Enter email"
-                />
-              </div>
-              <div>
-                <label
-                  class="mb-2 block font-bold text-gray-700"
-                  for="phone-number"
-                  >Phone Number (WhatsApp):</label
-                >
-                <input
-                  class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
-                  id="pnumber"
-                  name="pnumber"
-                  type="text"
-                  placeholder="Enter phone number"
-                />
-              </div>
-
-              <div class="col-span-2">
-                <label class="mb-2 block font-bold text-gray-700" for="address"
-                  >Address:</label
-                >
-                <textarea
-                  class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
-                  id="address"
-                  name="address"
-                  placeholder="Enter address"
-                ></textarea>
-              </div>
-              <div class="flex flex-col">
-                <label class="mb-2 block font-bold text-gray-700" for="country"
-                  >Country:</label
-                >
-                <select
-                  class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
-                  id="country"
-                  name="country"
-                  onchange="handleCountryChange()"
-                >
-                  <option value="">Select a country</option>
-                  <option value="Philippines">Philippines</option>
-                  <option value="United Kingdom">United Kingdom</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
-
-              <div class="mt-4 flex hidden flex-col" id="otherCountryContainer">
-                <label
-                  class="mb-2 block font-bold text-gray-700"
-                  for="otherCountry"
-                  >Other Country:</label
-                >
-                <input
-                  class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
-                  type="text"
-                  id="otherCountry"
-                  name="otherCountry"
-                  placeholder="Enter Country name"
-                />
-              </div>
-              <div>
-                <label
-                  class="mb-2 block font-bold text-gray-700"
-                  for="postal-code"
-                  >Postal Code:</label
-                >
-                <input
-                  class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
-                  id="pcode"
-                  name="pcode"
-                  type="text"
-                  placeholder="Enter postal code"
-                />
-              </div>
-
-              <div class="mb-4">
-                <label class="mb-2 block text-sm font-bold text-gray-700"
-                  >Applicant's Marital Status</label
-                >
-                <select
-                  id="AMaritalStatus"
-                  name="AMaritalStatus"
-                  class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
-                >
-                  <option value="">Select an option</option>
-                  <option value="Single">Single</option>
-                  <option value="Divorce/Anulled">Divorce/Anulled</option>
-                  <option value="Married">Married</option>
-                </select>
-              </div>
-
-              <div class="mb-4">
-                <span class="text-gray-700"
-                  >Did the Applicant already meet the Sponsor in person?</span
-                >
-                <div class="mt-2">
-                  <label class="inline-flex items-center">
-                    <input
-                      type="radio"
-                      class="form-radio"
-                      name="metSponsor"
-                      value="Yes"
-                    />
-                    <span class="ml-2">Yes</span>
-                  </label>
-                  <label class="ml-6 inline-flex items-center">
-                    <input
-                      type="radio"
-                      class="form-radio"
-                      name="metSponsor"
-                      value="No"
-                    />
-                    <span class="ml-2">No</span>
-                  </label>
-                </div>
-              </div>
-
-              <div class="mb-4">
-                <label class="mb-2 block text-sm font-bold text-gray-700"
-                  >Sponsor's Marital Status</label
-                >
-                <select
-                  id="SMaritalStatus"
-                  name="SMaritalStatus"
-                  class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
-                >
-                  <option value="">Select an option</option>
-                  <option value="Single">Single</option>
-                  <option value="Divorce/Anulled">Divorce/Anulled</option>
-                  <option value="Married">Married</option>
-                </select>
-              </div>
-
-              <div class="mb-4">
-                <label class="mb-2 block text-sm font-bold text-gray-700"
-                  >Sponsor's Source of Income</label
-                >
-                <select
-                  id="sponsor"
-                  name="sponsor"
-                  class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
-                >
-                  <option value="">Select an option</option>
-                  <option value="Pension">Pension</option>
-                  <option value="Employment">Employment</option>
-                  <option value="Business">Business</option>
-                  <option value="On Benefits">On Benefits</option>
-                </select>
-              </div>
-              <div class="col-span-2 mb-4">
-                <button
-                  class="focus:shadow-outline rounded bg-blue-500 py-2 px-4 font-bold text-white hover:bg-blue-50 focus:outline-none"
-                  type="submit"
-                  id="submit"
-                >
-                  Submit
-                </button>
-              </div>
-            </div>
-          </form>
-          <!-- Spouse visa -->
-          <div
-            id="Spouse-Visa"
-            class="container-1 mx-auto max-w-fit px-4 py-5"
-            style="display: none"
-          >
-            <h1 class="mb-5 text-2xl font-bold">Spouse Visa Application</h1>
-            <form id="SV" name="visa-form">
-              <div class="flex flex-col gap-4">
                 <div>
-                  <label
-                    class="mb-2 block font-bold text-gray-700"
-                    for="last-name"
-                    >Last Name:</label
-                  >
-                  <input
-                    class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
-                    id="lname"
-                    name="lname"
-                    type="text"
-                    placeholder="Enter last name"
-                  />
+                  <label class="block font-bold text-gray-700 mb-2" for="last-name">Last Name:</label>
+                  <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="lname" name="lname" type="text" placeholder="Enter last name">
                 </div>
                 <div>
-                  <label
-                    class="mb-2 block font-bold text-gray-700"
-                    for="first-name"
-                    >First Name:</label
-                  >
-                  <input
-                    class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
-                    id="fname"
-                    name="fname"
-                    type="text"
-                    placeholder="Enter first name"
-                  />
+                  <label class="block font-bold text-gray-700 mb-2" for="first-name">First Name:</label>
+                  <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fname" name="fname" type="text" placeholder="Enter first name">
                 </div>
                 <div>
-                  <label class="mb-2 block font-bold text-gray-700" for="email"
-                    >Email:</label
-                  >
-                  <input
-                    class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
-                    id="email"
-                    name="email"
-                    type="email"
-                    placeholder="Enter email"
-                  />
+                  <label class="block font-bold text-gray-700 mb-2" for="email">Email:</label>
+                  <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" name="email" type="email" placeholder="Enter email">
                 </div>
                 <div>
-                  <label
-                    class="mb-2 block font-bold text-gray-700"
-                    for="phone-number"
-                    >Phone Number (WhatsApp):</label
-                  >
-                  <input
-                    class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
-                    id="pnumber"
-                    name="pnumber"
-                    type="text"
-                    placeholder="Enter phone number"
-                  />
+                  <label class="block font-bold text-gray-700 mb-2" for="phone-number">Phone Number (WhatsApp):</label>
+                  <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="pnumber" name="pnumber" type="text" placeholder="Enter phone number">
                 </div>
-
+        
                 <div class="col-span-2">
-                  <label
-                    class="mb-2 block font-bold text-gray-700"
-                    for="address"
-                    >Address:</label
-                  >
-                  <textarea
-                    class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
-                    id="address"
-                    name="address"
-                    placeholder="Enter address"
-                  ></textarea>
+                  <label class="block font-bold text-gray-700 mb-2" for="address">Address:</label>
+                  <textarea class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="address" name="address" placeholder="Enter address"></textarea>
                 </div>
 
                 <div class="flex flex-col">
-                  <label
-                    class="mb-2 block font-bold text-gray-700"
-                    for="country"
-                    >Country:</label
-                  >
-                  <select
-                    class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
-                    id="country"
-                    name="country"
-                    onchange="handleCountryChange()"
-                  >
-                    <option value="">Select a country</option>
-                    <option value="Philippines">Philippines</option>
-                    <option value="United Kingdom">United Kingdom</option>
-                    <option value="Other">Other</option>
-                  </select>
-                </div>
-
-                <div
-                  class="mt-4 flex hidden flex-col"
-                  id="otherCountryContainer"
-                >
-                  <label
-                    class="mb-2 block font-bold text-gray-700"
-                    for="otherCountry"
-                    >Other Country:</label
-                  >
-                  <input
-                    class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
-                    type="text"
-                    id="otherCountry"
-                    name="otherCountry"
-                    placeholder="Enter Country name"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    class="mb-2 block font-bold text-gray-700"
-                    for="postal-code"
-                    >Postal Code:</label
-                  >
-                  <input
-                    class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
-                    id="pcode"
-                    name="pcode"
-                    type="text"
-                    placeholder="Enter postal code"
-                  />
-                </div>
-
-                <div class="mb-4">
-                  <label class="mb-2 block text-sm font-bold text-gray-700"
-                    >Sponsor's Source of Income</label
-                  >
-                  <select
-                    id="sponsor-income"
-                    name="sponsor-income"
-                    class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
-                  >
-                    <option value="">Select an option</option>
-                    <option value="Pension">Pension</option>
-                    <option value="Employment">Employment</option>
-                    <option value="Business">Business</option>
-                    <option value="On Benefits">On Benefits</option>
-                  </select>
-                </div>
-                <div class="col-span-2 mb-4">
-                  <button
-                    class="focus:shadow-outline rounded bg-blue-500 py-2 px-4 font-bold text-white hover:bg-blue-50 focus:outline-none"
-                    type="submit"
-                    id="submit"
-                  >
-                    Submit
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-          <!-- Married visa -->
-          <div
-            id="Married-Visit-Visa"
-            class="container-1 mx-auto max-w-fit px-4 py-5"
-            style="display: none"
-          >
-            <h1 class="mb-5 text-2xl font-bold">
-              Married Visit Visa Application
-            </h1>
-            <form id="MV" name="visa-form">
-              <div class="flex flex-col gap-4">
-                <div>
-                  <label
-                    class="mb-2 block font-bold text-gray-700"
-                    for="last-name"
-                    >Last Name:</label
-                  >
-                  <input
-                    class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
-                    id="lname"
-                    name="lname"
-                    type="text"
-                    placeholder="Enter last name"
-                  />
-                </div>
-                <div>
-                  <label
-                    class="mb-2 block font-bold text-gray-700"
-                    for="first-name"
-                    >First Name:</label
-                  >
-                  <input
-                    class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
-                    id="fname"
-                    name="fname"
-                    type="text"
-                    placeholder="Enter first name"
-                  />
-                </div>
-                <div>
-                  <label class="mb-2 block font-bold text-gray-700" for="email"
-                    >Email:</label
-                  >
-                  <input
-                    class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
-                    id="email"
-                    name="email"
-                    type="email"
-                    placeholder="Enter email"
-                  />
-                </div>
-                <div>
-                  <label
-                    class="mb-2 block font-bold text-gray-700"
-                    for="phone-number"
-                    >Phone Number (WhatsApp):</label
-                  >
-                  <input
-                    class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
-                    id="pnumber"
-                    name="pnumber"
-                    type="text"
-                    placeholder="Enter phone number"
-                  />
-                </div>
-
-                <div class="col-span-2">
-                  <label
-                    class="mb-2 block font-bold text-gray-700"
-                    for="address"
-                    >Address:</label
-                  >
-                  <textarea
-                    class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
-                    id="address"
-                    name="address"
-                    placeholder="Enter address"
-                  ></textarea>
-                </div>
-                <div class="flex flex-col">
-                  <label
-                    class="mb-2 block font-bold text-gray-700"
-                    for="country"
-                    >Country:</label
-                  >
-                  <select
-                    class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
-                    id="country"
-                    name="country"
-                    onchange="handleCountryChange()"
-                  >
-                    <option value="">Select a country</option>
-                    <option value="Philippines">Philippines</option>
-                    <option value="United Kingdom">United Kingdom</option>
-                    <option value="Other">Other</option>
-                  </select>
-                </div>
-
-                <div
-                  class="mt-4 flex hidden flex-col"
-                  id="otherCountryContainer"
-                >
-                  <label
-                    class="mb-2 block font-bold text-gray-700"
-                    for="otherCountry"
-                    >Other Country:</label
-                  >
-                  <input
-                    class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
-                    type="text"
-                    id="otherCountry"
-                    name="otherCountry"
-                    placeholder="Enter Country name"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    class="mb-2 block font-bold text-gray-700"
-                    for="postal-code"
-                    >Postal Code:</label
-                  >
-                  <input
-                    class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
-                    id="pcode"
-                    name="pcode"
-                    type="text"
-                    placeholder="Enter postal code"
-                  />
-                </div>
-
-                <div class="mb-4">
-                  <label class="mb-2 block text-sm font-bold text-gray-700"
-                    >Applicant's Marital Status</label
-                  >
-                  <select
-                    id="AMaritalStatus"
-                    name="AMaritalStatus"
-                    class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
-                  >
-                    <option value="">Select an option</option>
-                    <option value="Single">Single</option>
-                    <option value="Divorce/Anulled">Divorce/Anulled</option>
-                    <option value="Married">Married</option>
-                  </select>
-                </div>
-
-                <div class="mb-4">
-                  <span class="text-gray-700"
-                    >Did the Applicant already meet the Sponsor in person?</span
-                  >
-                  <div class="mt-2">
-                    <label class="inline-flex items-center">
-                      <input
-                        type="radio"
-                        class="form-radio"
-                        name="metSponsor"
-                        value="Yes"
-                      />
-                      <span class="ml-2">Yes</span>
-                    </label>
-                    <label class="ml-6 inline-flex items-center">
-                      <input
-                        type="radio"
-                        class="form-radio"
-                        name="metSponsor"
-                        value="No"
-                      />
-                      <span class="ml-2">No</span>
-                    </label>
-                  </div>
-                </div>
-
-                <div class="mb-4">
-                  <label class="mb-2 block text-sm font-bold text-gray-700"
-                    >Applicant's Source of Income</label
-                  >
-                  <select
-                    id="applicant-income"
-                    name="applicant-income"
-                    class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
-                  >
-                    <option value="">Select an option</option>
-                    <option value="Employment (more than a year)">
-                      Employment (more than a year)
-                    </option>
-                    <option value="Employment (less than a year)">
-                      Employment (less than a year)
-                    </option>
-                    <option value="Business (more than a year)">
-                      Business (more than a year)
-                    </option>
-                    <option value="Business (less than a year)">
-                      Business (less than a year)
-                    </option>
-                  </select>
-                </div>
-
-                <div class="mb-4">
-                  <label class="mb-2 block text-sm font-bold text-gray-700"
-                    >Do you have strong ties?</label
-                  >
-                  <select
-                    id="sties"
-                    name="sties"
-                    class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
-                  >
-                    <option value="">Select an option</option>
-                    <option value="Family">Family</option>
-                    <option value="Property">Property</option>
-                    <option value="Pet">Pet</option>
-                    <option value="None">None</option>
-                  </select>
-                </div>
-
-                <div class="mb-4">
-                  <label class="mb-2 block text-sm font-bold text-gray-700"
-                    >Partner's Marital Status</label
-                  >
-                  <select
-                    id="SMaritalStatus"
-                    name="SMaritalStatus"
-                    class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
-                  >
-                    <option value="">Select an option</option>
-                    <option value="Single">Single</option>
-                    <option value="Divorce/Anulled">Divorce/Anulled</option>
-                    <option value="Married">Married</option>
-                  </select>
-                </div>
-
-                <div class="mb-4">
-                  <label class="mb-2 block text-sm font-bold text-gray-700"
-                    >Partner's Source of Income</label
-                  >
-                  <select
-                    id="sponsor-income"
-                    name="sponsor-income"
-                    class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
-                  >
-                    <option value="">Select an option</option>
-                    <option value="Pension">Pension</option>
-                    <option value="Employment">Employment</option>
-                    <option value="Business">Business</option>
-                    <option value="Benefits">Benefits</option>
-                  </select>
-                </div>
-                <div class="col-span-2 mb-4">
-                  <button
-                    class="focus:shadow-outline rounded bg-blue-500 py-2 px-4 font-bold text-white hover:bg-blue-50 focus:outline-none"
-                    type="submit"
-                    id="submit"
-                  >
-                    Submit
-                  </button>
-                </div>
-              </div>
-            </form>
-            <!-- Unmarried Visit visa -->
-            <div
-              id="Unmarried-Visit-Visa"
-              class="container-1 mx-auto max-w-fit px-4 py-5"
-              style="display: none"
-            >
-              <h1 class="mb-5 text-2xl font-bold">
-                Unmarried Partner Visa Application
-              </h1>
-              <form id="UMVV" name="visa-form">
-                <div class="flex flex-col gap-4">
-                  <div>
-                    <label
-                      class="mb-2 block font-bold text-gray-700"
-                      for="last-name"
-                      >Last Name:</label
-                    >
-                    <input
-                      class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
-                      id="lname"
-                      name="lname"
-                      type="text"
-                      placeholder="Enter last name"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      class="mb-2 block font-bold text-gray-700"
-                      for="first-name"
-                      >First Name:</label
-                    >
-                    <input
-                      class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
-                      id="fname"
-                      name="fname"
-                      type="text"
-                      placeholder="Enter first name"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      class="mb-2 block font-bold text-gray-700"
-                      for="email"
-                      >Email:</label
-                    >
-                    <input
-                      class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
-                      id="email"
-                      name="email"
-                      type="email"
-                      placeholder="Enter email"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      class="mb-2 block font-bold text-gray-700"
-                      for="phone-number"
-                      >Phone Number (WhatsApp):</label
-                    >
-                    <input
-                      class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
-                      id="pnumber"
-                      name="pnumber"
-                      type="text"
-                      placeholder="Enter phone number"
-                    />
-                  </div>
-
-                  <div class="col-span-2">
-                    <label
-                      class="mb-2 block font-bold text-gray-700"
-                      for="address"
-                      >Address:</label
-                    >
-                    <textarea
-                      class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
-                      id="address"
-                      name="address"
-                      placeholder="Enter address"
-                    ></textarea>
-                  </div>
-
-                  <div class="flex flex-col">
-                    <label
-                      class="mb-2 block font-bold text-gray-700"
-                      for="country"
-                      >Country:</label
-                    >
+                    <label class="block font-bold text-gray-700 mb-2" for="country">Country:</label>
                     <select
-                      class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
+                      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       id="country"
                       name="country"
-                      onchange="handleCountryChange()"
+                      onchange="handleCountryChange(event, 'otherCountryContainer')"
                     >
                       <option value="">Select a country</option>
                       <option value="Philippines">Philippines</option>
@@ -1031,154 +100,588 @@
                       <option value="Other">Other</option>
                     </select>
                   </div>
-
-                  <div
-                    class="mt-4 flex hidden flex-col"
-                    id="otherCountryContainer"
-                  >
-                    <label
-                      class="mb-2 block font-bold text-gray-700"
-                      for="otherCountry"
-                      >Other Country:</label
-                    >
+                  
+                  <div class="flex flex-col mt-4 hidden" id="otherCountryContainer">
+                    <label class="block font-bold text-gray-700 mb-2" for="otherCountry">Other Country:</label>
                     <input
-                      class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
+                      class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       type="text"
                       id="otherCountry"
                       name="otherCountry"
                       placeholder="Enter Country name"
                     />
                   </div>
-
-                  <div>
-                    <label
-                      class="mb-2 block font-bold text-gray-700"
-                      for="postal-code"
-                      >Postal Code:</label
-                    >
-                    <input
-                      class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
-                      id="pcode"
-                      name="pcode"
-                      type="text"
-                      placeholder="Enter postal code"
-                    />
-                  </div>
-
-                  <div class="mb-4">
-                    <label class="mb-2 block text-sm font-bold text-gray-700"
-                      >Applicant's Marital Status</label
-                    >
-                    <select
-                      id="AMaritalStatus"
-                      name="AMaritalStatus"
-                      class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
-                    >
-                      <option value="">Select an option</option>
-                      <option value="Single">Single</option>
-                      <option value="Divorce/Anulled">Divorce/Anulled</option>
-                      <option value="Married">Married</option>
+                <div>
+                  <label class="block font-bold text-gray-700 mb-2" for="postal-code">Postal Code:</label>
+                  <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="pcode" name="pcode" type="text" placeholder="Enter postal code">
+                </div>
+            
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Applicant's Relationship with the Sponsor</label>
+                    <select id="relationship" name="relationship" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                        <option value="">Select an option</option>
+                        <option value="Family">Family</option>
+                        <option value="Partner">Partner</option>
+                        <option value="Friends">Friends</option>
+                        <option value="Other">Other</option>
                     </select>
-                  </div>
+                    <!-- Add javascript from index.html -->
+                </div>
 
-                  <div class="mb-4">
-                    <span class="text-gray-700">Have you met in person?</span>
-                    <div class="mt-2">
-                      <label class="inline-flex items-center">
-                        <input
-                          type="radio"
-                          class="form-radio"
-                          name="metSponsor"
-                          value="Yes"
-                        />
-                        <span class="ml-2">Yes</span>
-                      </label>
-                      <label class="ml-6 inline-flex items-center">
-                        <input
-                          type="radio"
-                          class="form-radio"
-                          name="metSponsor"
-                          value="No"
-                        />
-                        <span class="ml-2">No</span>
-                      </label>
+                <div class="mb-4">
+                    <span class="text-gray-700">Did the Applicant already meet the Sponsor in person?</span>
+                    <div class="mb-2">
+                        <label class="inline-flex items-center">
+                            <input type="radio" class="form-radio" name="metSponsor" value="Yes">
+                            <span class="ml-2">Yes</span>
+                        </label>
+                        <label class="inline-flex items-center ml-6">
+                            <input type="radio" class="form-radio" name="metSponsor" value="No">
+                            <span class="ml-2">No</span>
+                        </label>
                     </div>
-                  </div>
+                </div>
 
-                  <div class="mb-4">
-                    <span class="text-gray-700"
-                      >Have you lived together (cohabitate) for more than 2
-                      years?</span
-                    >
-                    <div class="mt-2">
-                      <label class="inline-flex items-center">
-                        <input
-                          type="radio"
-                          class="form-radio"
-                          name="lived"
-                          value="Yes"
-                        />
-                        <span class="ml-2">Yes</span>
-                      </label>
-                      <label class="ml-6 inline-flex items-center">
-                        <input
-                          type="radio"
-                          class="form-radio"
-                          name="lived"
-                          value="No"
-                        />
-                        <span class="ml-2">No</span>
-                      </label>
-                    </div>
-                  </div>
-
-                  <div class="mb-4">
-                    <label class="mb-2 block text-sm font-bold text-gray-700"
-                      >Sponsor's Marital Status</label
-                    >
-                    <select
-                      id="SMaritalStatus"
-                      name="SMaritalStatus"
-                      class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
-                    >
-                      <option value="">Select an option</option>
-                      <option value="Single">Single</option>
-                      <option value="Divorce/Anulled">Divorce/Anulled</option>
-                      <option value="Married">Married</option>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Applicant's Source of Income</label>
+                    <select id="applicant-income" name="applicant-income" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                        <option value="">Select an option</option>
+                        <option value="Employment (more than a year)">Employment (more than a year)</option>
+                        <option value="Employment (less than a year)">Employment (less than a year)</option>
+                        <option value="Business (more than a year)">Business (more than a year)</option>
+                        <option value="Business (less than a year)">Business (less than a year)</option>
                     </select>
-                  </div>
+                </div>
 
-                  <div class="mb-4">
-                    <label class="mb-2 block text-sm font-bold text-gray-700"
-                      >Sponsor's Source of Income</label
-                    >
-                    <select
-                      id="sponsor-income"
-                      class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
-                    >
-                      <option value="Pension">Pension</option>
-                      <option value="Employment">Employment</option>
-                      <option value="Business">Business</option>
-                      <option value="On Benefits">On Benefits</option>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Sponsor's Source of Income</label>
+                    <select id="sponsor-income" name="sponsor-income" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                        <option value="">Select an option</option>
+                        <option value="Pension">Pension</option>
+                        <option value="Employment">Employment</option>
+                        <option value="Business/Self-employed">Business/Self-employed</option>
+                        <option value="On Benefits">On Benefits</option>
                     </select>
-                  </div>
-                  <div class="col-span-2 mb-4">
-                    <button
-                      class="focus:shadow-outline rounded bg-blue-500 py-2 px-4 font-bold text-white hover:bg-blue-50 focus:outline-none"
-                      type="submit"
-                      id="submit"
-                    >
-                      Submit
-                    </button>
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Salary Range (If applying without a sponsor)</label>
+                    <input id="salary" name="salary" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="number" placeholder="Enter your salary range">
+                </div>
+                <div class="col-span-2 mb-4">
+                    <button class="bg-blue-500 hover:bg-blue-50 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" id="submit">Submit</button>
                   </div>
                 </div>
-              </form>
-
-              <script src="visitvisa.js"></script>
             </div>
+        </form>
+<!-- fiance visa -->
+    <div id="Fiance-Visa" class="container-1 max-w-fit mx-auto px-4 py-5" style="display: none;">
+      <h1 class="text-2xl font-bold mb-5">Fiance Visa Application</h1>
+      <form id="FV" name="visa-form">
+          <div class="flex flex-col gap-4">
+              <div>
+                <label class="block font-bold text-gray-700 mb-2" for="last-name">Last Name:</label>
+                <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="lname" name="lname" type="text" placeholder="Enter last name">
+              </div>
+              <div>
+                <label class="block font-bold text-gray-700 mb-2" for="first-name">First Name:</label>
+                <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fname" name="fname" type="text" placeholder="Enter first name">
+              </div>
+              <div>
+                <label class="block font-bold text-gray-700 mb-2" for="email">Email:</label>
+                <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" name="email" type="email" placeholder="Enter email">
+              </div>
+              <div>
+                <label class="block font-bold text-gray-700 mb-2" for="phone-number">Phone Number (WhatsApp):</label>
+                <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="pnumber" name="pnumber" type="text" placeholder="Enter phone number">
+              </div>
+      
+              <div class="col-span-2">
+                <label class="block font-bold text-gray-700 mb-2" for="address">Address:</label>
+                <textarea class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="address" name="address" placeholder="Enter address"></textarea>
+              </div>
+              <div class="flex flex-col">
+                  <label class="block font-bold text-gray-700 mb-2" for="country">Country:</label>
+                  <select
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="country2"
+                    name="country"
+                    onchange="handleCountryChange(event, 'otherCountryContainer2')"
+                  >
+                    <option value="">Select a country</option>
+                    <option value="Philippines">Philippines</option>
+                    <option value="United Kingdom">United Kingdom</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                
+                <div class="flex flex-col mt-4 hidden" id="otherCountryContainer2">
+                  <label class="block font-bold text-gray-700 mb-2" for="otherCountry">Other Country:</label>
+                  <input
+                    class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    type="text"
+                    id="otherCountry"
+                    name="otherCountry"
+                    placeholder="Enter Country name"
+                  />
+                </div>
+              <div>
+                <label class="block font-bold text-gray-700 mb-2" for="postal-code">Postal Code:</label>
+                <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="pcode" name="pcode" type="text" placeholder="Enter postal code">
+              </div>
+          
+              <div class="mb-4">
+                  <label class="block text-gray-700 text-sm font-bold mb-2">Applicant's Marital Status</label>
+                  <select id="AMaritalStatus" name="AMaritalStatus"class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                      <option value="">Select an option</option>
+                      <option value="Single">Single</option>
+                      <option value="Divorce/Anulled">Divorce/Anulled</option>
+                      <option value="Married">Married</option>
+                  </select>
+              </div>
+
+              <div class="mb-4">
+                  <span class="text-gray-700">Have you met your sponsor in person?</span>
+                  <div class="mt-2">
+                      <label class="inline-flex items-center">
+                          <input type="radio" class="form-radio" name="metSponsor" value="Yes">
+                          <span class="ml-2">Yes</span>
+                      </label>
+                      <label class="inline-flex items-center ml-6">
+                          <input type="radio" class="form-radio" name="metSponsor" value="No">
+                          <span class="ml-2">No</span>
+                      </label>
+                  </div>
+              </div>
+
+                <div class="mb-4">
+                  <span class="text-gray-700">Have you met the financial requirement of £18,600?</span>
+                  <div class="mt-2">
+                      <label class="inline-flex items-center">
+                          <input type="radio" class="form-radio" name="financialrequirement" value="Yes">
+                          <span class="ml-2">Yes</span>
+                      </label>
+                      <label class="inline-flex items-center ml-6">
+                          <input type="radio" class="form-radio" name="financialrequirement" value="No">
+                          <span class="ml-2">No</span>
+                      </label>
+                  </div>
+              </div>
+
+              <div class="mb-4">
+                  <label class="block text-gray-700 text-sm font-bold mb-2">Sponsor's Marital Status</label>
+                  <select id="SMaritalStatus" name ="SMaritalStatus" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                      <option value="">Select an option</option>
+                      <option value="Single">Single</option>
+                      <option value="Divorce/Anulled">Divorce/Anulled</option>
+                      <option value="Married">Married</option>
+                  </select>
+              </div>
+
+              <div class="mb-4">
+                  <label class="block text-gray-700 text-sm font-bold mb-2">Sponsor's Source of Income</label>
+                  <select id="sponsor" name="sponsor" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                      <option value="">Select an option</option>
+                      <option value ="Pension">Pension</option>
+                      <option value ="Employment">Employment</option>
+                      <option value ="Business/Self-employed">Business/Self-employed</option>
+                      <option value ="On Benefits">On Benefits</option>
+                  </select>
+              </div>
+              <div class="col-span-2 mb-4">
+                  <button class="bg-blue-500 hover:bg-blue-50 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" id="submit">Submit</button>
+                </div>
+              </div>
           </div>
+      </form>
+<!-- Spouse visa -->
+  <div id="Spouse-Visa" class="container-1 max-w-fit mx-auto px-4 py-5" style="display: none;">
+    <h1 class="text-2xl font-bold mb-5">Spouse Visa Application</h1>
+    <form id="SV" name="visa-form">
+        <div class="flex flex-col gap-4">
+            <div>
+              <label class="block font-bold text-gray-700 mb-2" for="last-name">Last Name:</label>
+              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="lname" name="lname" type="text" placeholder="Enter last name">
+            </div>
+            <div>
+              <label class="block font-bold text-gray-700 mb-2" for="first-name">First Name:</label>
+              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fname" name="fname" type="text" placeholder="Enter first name">
+            </div>
+            <div>
+              <label class="block font-bold text-gray-700 mb-2" for="email">Email:</label>
+              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" name="email" type="email" placeholder="Enter email">
+            </div>
+            <div>
+              <label class="block font-bold text-gray-700 mb-2" for="phone-number">Phone Number (WhatsApp):</label>
+              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="pnumber" name="pnumber" type="text" placeholder="Enter phone number">
+            </div>
+    
+            <div class="col-span-2">
+              <label class="block font-bold text-gray-700 mb-2" for="address">Address:</label>
+              <textarea class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="address" name="address" placeholder="Enter address"></textarea>
+            </div>
+
+              <div class="flex flex-col">
+                  <label class="block font-bold text-gray-700 mb-2" for="country">Country:</label>
+                  <select
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="country3"
+                    name="country"
+                    onchange="handleCountryChange(event, 'otherCountryContainer3')"
+                  >
+                    <option value="">Select a country</option>
+                    <option value="Philippines">Philippines</option>
+                    <option value="United Kingdom">United Kingdom</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                
+                <div class="flex flex-col mt-4 hidden" id="otherCountryContainer3">
+                  <label class="block font-bold text-gray-700 mb-2" for="otherCountry">Other Country:</label>
+                  <input
+                    class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    type="text"
+                    id="otherCountry"
+                    name="otherCountry"
+                    placeholder="Enter Country name"
+                  />
+                </div>
+
+            <div>
+              <label class="block font-bold text-gray-700 mb-2" for="postal-code">Postal Code:</label>
+              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="pcode" name="pcode" type="text" placeholder="Enter postal code">
+            </div>
+
+              <div class="mb-4">
+                  <span class="text-gray-700">Have you met the financial requirement of £18,600?</span>
+                  <div class="mt-2">
+                      <label class="inline-flex items-center">
+                          <input type="radio" class="form-radio" name="financialrequirement" value="Yes">
+                          <span class="ml-2">Yes</span>
+                      </label>
+                      <label class="inline-flex items-center ml-6">
+                          <input type="radio" class="form-radio" name="financialrequirement" value="No">
+                          <span class="ml-2">No</span>
+                      </label>
+                  </div>
+              </div>
+
+                <div>
+              <label class="block font-bold text-gray-700 mb-2" for="postal-code">Place of Marriage</label>
+              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="pofmarriage" name="pofmarriage" type="text" placeholder="Enter place of marriage">
+            </div>
+
+              <div>
+              <label class="block font-bold text-gray-700 mb-2" for="postal-code">Date of Marriage</label>
+              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="dofmarriage" name="dofmarriage" type="date" placeholder="Select Date">
+            </div>
+
+
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Sponsor's Source of Income</label>
+                <select id="sponsor-income1" 
+                onchange="benefitchange(event, 'btf')"
+                name="sponsor-income" 
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <option value="">Select an option</option>
+                    <option value="Pension">Pension</option>
+                    <option value="Employment">Employment</option>
+                    <option value="Business/Self-employed">Business/Self-Employed</option>
+                    <option value="On Benefits">On Benefits</option>
+                </select>
+            </div>
+
+            <div id="btf" class="hidden mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2">Type of Benefits</label>
+  <input type="text" id="benefits-type" name="benefits-type" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+</div>
+
+
+
+
+            <div class="col-span-2 mb-4">
+                <button class="bg-blue-500 hover:bg-blue-50 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" id="submit">Submit</button>
+              </div>
+            
         </div>
-      </div>
-    </div>
-  </body>
+    </form>
+</div>
+<!-- Married visa -->
+<div id="Married-Visit-Visa" class="container-1 max-w-fit mx-auto px-4 py-5" style="display: none;">
+    <h1 class="text-2xl font-bold mb-5">Married Visit Visa Application</h1>
+    <form id="MV" name="visa-form">
+        <div class="flex flex-col gap-4">
+            <div>
+              <label class="block font-bold text-gray-700 mb-2" for="last-name">Last Name:</label>
+              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="lname" name="lname" type="text" placeholder="Enter last name">
+            </div>
+            <div>
+              <label class="block font-bold text-gray-700 mb-2" for="first-name">First Name:</label>
+              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fname" name="fname" type="text" placeholder="Enter first name">
+            </div>
+            <div>
+              <label class="block font-bold text-gray-700 mb-2" for="email">Email:</label>
+              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" name="email" type="email" placeholder="Enter email">
+            </div>
+            <div>
+              <label class="block font-bold text-gray-700 mb-2" for="phone-number">Phone Number (WhatsApp):</label>
+              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="pnumber" name="pnumber" type="text" placeholder="Enter phone number">
+            </div>
+    
+            <div class="col-span-2">
+              <label class="block font-bold text-gray-700 mb-2" for="address">Address:</label>
+              <textarea class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="address" name="address" placeholder="Enter address"></textarea>
+            </div>
+            <div class="flex flex-col">
+              <label class="block font-bold text-gray-700 mb-2" for="country">Country:</label>
+              <select
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="country4"
+                name="country"
+                onchange="handleCountryChange(event, 'otherCountryContainer4')"
+              >
+                <option value="">Select a country</option>
+                <option value="Philippines">Philippines</option>
+                <option value="United Kingdom">United Kingdom</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            
+            <div class="flex flex-col mt-4 hidden" id="otherCountryContainer4">
+              <label class="block font-bold text-gray-700 mb-2" for="otherCountry">Other Country:</label>
+              <input
+                class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                type="text"
+                id="otherCountry"
+                name="otherCountry"
+                placeholder="Enter Country name"
+              />
+            </div>
+
+
+
+
+            <div>
+              <label class="block font-bold text-gray-700 mb-2" for="postal-code">Postal Code:</label>
+              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="pcode" name="pcode" type="text" placeholder="Enter postal code">
+            </div>
+        
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Applicant's Marital Status</label>
+                <select id="AMaritalStatus" name="AMaritalStatus" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <option value="">Select an option</option>
+                    <option value="Single">Single</option>
+                    <option value="Divorce/Anulled">Divorce/Anulled</option>
+                    <option value="Married">Married</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <span class="text-gray-700">Have you met in person?</span>
+                <div class="mt-2">
+                    <label class="inline-flex items-center">
+                        <input type="radio" class="form-radio" name="metSponsor" value="Yes">
+                        <span class="ml-2">Yes</span>
+                    </label>
+                    <label class="inline-flex items-center ml-6">
+                        <input type="radio" class="form-radio" name="metSponsor" value="No">
+                        <span class="ml-2">No</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Applicant's Source of Income</label>
+                <select id="applicant-income" name="applicant-income" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <option value="">Select an option</option>
+                    <option value="Employment (more than a year)">Employment (more than a year)</option>
+                    <option value="Employment (less than a year)">Employment (less than a year)</option>
+                    <option value="Business (more than a year)">Business (more than a year)</option>
+                    <option value="Business (less than a year)">Business (less than a year)</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Do you have strong ties?</label>
+                <select id="sties" name="sties" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <option value="">Select an option</option>
+                    <option value="Family">Family</option>
+                    <option value="Property">Property</option>
+                    <option value="Pet">Pet</option>
+                    <option value="None">None</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Partner's Marital Status</label>
+                <select id="SMaritalStatus" name="SMaritalStatus"class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <option value="">Select an option</option>
+                    <option value="Single">Single</option>
+                    <option value="Divorce/Anulled">Divorce/Anulled</option>
+                    <option value="Married">Married</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Partner's Source of Income</label>
+                <select id="sponsor-income" name="sponsor-income" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <option value="">Select an option</option>
+                    <option value="Pension">Pension</option>
+                    <option value="Employment">Employment</option>
+                    <option value="Business/Self-employed">Business/Self-employed</option>
+                    <option value="Benefits">Benefits</option>
+                </select>
+            </div>
+            <div class="col-span-2 mb-4">
+                <button class="bg-blue-500 hover:bg-blue-50 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" id="submit">Submit</button>
+              </div>
+            </div>
+        </div>
+    </form>
+  <!-- Unmarried Visit visa -->
+<div id="Unmarried-Visit-Visa" class="container-1 max-w-fit mx-auto px-4 py-5" style="display: none;">
+    <h1 class="text-2xl font-bold mb-5">Unmarried Partner Visa Application</h1>
+    <form id="UMVV" name="visa-form">
+        <div class="flex flex-col gap-4">
+            <div>
+              <label class="block font-bold text-gray-700 mb-2" for="last-name">Last Name:</label>
+              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="lname" name="lname" type="text" placeholder="Enter last name">
+            </div>
+            <div>
+              <label class="block font-bold text-gray-700 mb-2" for="first-name">First Name:</label>
+              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fname" name="fname" type="text" placeholder="Enter first name">
+            </div>
+            <div>
+              <label class="block font-bold text-gray-700 mb-2" for="email">Email:</label>
+              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" name="email" type="email" placeholder="Enter email">
+            </div>
+            <div>
+              <label class="block font-bold text-gray-700 mb-2" for="phone-number">Phone Number (WhatsApp):</label>
+              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="pnumber" name="pnumber" type="text" placeholder="Enter phone number">
+            </div>
+    
+            <div class="col-span-2">
+              <label class="block font-bold text-gray-700 mb-2" for="address">Address:</label>
+              <textarea class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="address" name="address" placeholder="Enter address"></textarea>
+            </div>
+
+            <div class="flex flex-col">
+              <label class="block font-bold text-gray-700 mb-2" for="country">Country:</label>
+              <select
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="country5"
+                name="country"
+                onchange="handleCountryChange(event, 'otherCountryContainer5')"
+              >
+                <option value="">Select a country</option>
+                <option value="Philippines">Philippines</option>
+                <option value="United Kingdom">United Kingdom</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            
+            <div class="flex flex-col mt-4 hidden" id="otherCountryContainer5">
+              <label class="block font-bold text-gray-700 mb-2" for="otherCountry">Other Country:</label>
+              <input
+                class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                type="text"
+                id="otherCountry"
+                name="otherCountry"
+                placeholder="Enter Country name"
+              />
+            </div>
+            
+            <div>
+              <label class="block font-bold text-gray-700 mb-2" for="postal-code">Postal Code:</label>
+              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="pcode" name="pcode" type="text" placeholder="Enter postal code">
+            </div>
+        
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Applicant's Marital Status</label>
+                <select id="AMaritalStatus" name="AMaritalStatus" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <option value="">Select an option</option>
+                    <option value="Single">Single</option>
+                    <option value="Divorce/Anulled">Divorce/Anulled</option>
+                    <option value="Separated">Separated</option>
+                </select>
+            </div>
+              <div class="mb-4">
+                  <span class="text-gray-700">Have you met the financial requirement of £18,600?</span>
+                  <div class="mt-2">
+                      <label class="inline-flex items-center">
+                          <input type="radio" class="form-radio" name="financialrequirement" value="Yes">
+                          <span class="ml-2">Yes</span>
+                      </label>
+                      <label class="inline-flex items-center ml-6">
+                          <input type="radio" class="form-radio" name="financialrequirement" value="No">
+                          <span class="ml-2">No</span>
+                      </label>
+                  </div>
+              </div>
+
+            <div class="mb-4">
+                <span class="text-gray-700">Have you met in person?</span>
+                <div class="mt-2">
+                    <label class="inline-flex items-center">
+                        <input type="radio" class="form-radio" name="metSponsor" value="Yes">
+                        <span class="ml-2">Yes</span>
+                    </label>
+                    <label class="inline-flex items-center ml-6">
+                        <input type="radio" class="form-radio" name="metSponsor" value="No">
+                        <span class="ml-2">No</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <span class="text-gray-700">Have you lived together (cohabitate) for more than 2 years?</span>
+                <div class="mt-2">
+                    <label class="inline-flex items-center">
+                        <input type="radio" class="form-radio" name="lived" value="Yes">
+                        <span class="ml-2">Yes</span>
+                    </label>
+                    <label class="inline-flex items-center ml-6">
+                        <input type="radio" class="form-radio" name="lived" value="No">
+                        <span class="ml-2">No</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Sponsor's Marital Status</label>
+                <select id="SMaritalStatus" name="SMaritalStatus" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <option value="">Select an option</option>
+                    <option value="Single">Single</option>
+                    <option value="Divorce/Anulled">Divorce/Anulled</option>
+                    <option value="Married">Separated</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Sponsor's Source of Income</label>
+                <select id="sponsor-income" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <option value="Pension">Pension</option>
+                    <option value="Employment">Employment</option>
+                    <option value="Business/Self-employed">Business/Self-employed</option>
+                    <option value="On Benefits">On Benefits</option>
+                </select>
+            </div>
+            <div class="col-span-2 mb-4">
+                <button class="bg-blue-500 hover:bg-blue-50 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" id="submit">Submit</button>
+              </div>
+            </div>
+        </div>
+    </form>
+
+
+
+
+
+
+
+    <script src="visitvisa.js"></script>
+</body>
 </html>
+
+
+    
