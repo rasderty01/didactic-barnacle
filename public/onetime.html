@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.17/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <title>One-Time Consultation</title>
+  </head>
+
+  <body>
+    <div class="my-10 flex flex-col justify-center">
+      <h2 class="m-auto flex px-2 py-2 font-sans text-3xl font-bold text-black">
+        One-Time Consultation
+      </h2>
+      <form>
+        <div class="m-auto flex justify-center py-10">
+          <input
+            id="emailverification"
+            name="emailverification"
+            type="text"
+            class="mr-2 w-min border-2 border-black py-2 px-4"
+            placeholder="Search by email address"
+          />
+          <button
+            id="search-btn"
+            class="w-min rounded bg-blue-500 py-2 px-4 font-bold text-white hover:bg-blue-600"
+          >
+            Search
+          </button>
+        </div>
+      </form>
+      <div class="mx-auto flex flex-col">
+        <!-- Add a table to display the data -->
+        <table class="w-fit border-collapse border border-gray-400">
+          <thead>
+            <tr>
+              <th class="border border-gray-400 p-2">Name</th>
+              <th class="border border-gray-400 p-2">Email</th>
+              <th class="border border-gray-400 p-2">Phone</th>
+              <th class="border border-gray-400 p-2">Address</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-gray-400 p-2">John Doe</td>
+              <td class="border border-gray-400 p-2">johndoe@example.com</td>
+              <td class="border border-gray-400 p-2">555-1234</td>
+              <td class="border border-gray-400 p-2">123 Main St</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-400 p-2">Jane Smith</td>
+              <td class="border border-gray-400 p-2">janesmith@example.com</td>
+              <td class="border border-gray-400 p-2">555-5678</td>
+              <td class="border border-gray-400 p-2">456 Elm St</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <form class="mx-auto my-5 flex flex-col border-black p-10">
+        <input id="file-input" class="my-5 cursor-pointer" type="file" />
+
+        <button
+          id="submit"
+          value="submit"
+          class="w-min rounded bg-blue-500 py-2 px-4 font-bold text-white hover:bg-blue-600"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  </body>
+</html>

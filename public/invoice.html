@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.17/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <form>
+      <div class="m-auto flex justify-center py-10">
+        <input
+          id="emailverification"
+          name="emailverification"
+          type="text"
+          class="mr-2 w-min border-2 border-black py-2 px-4"
+          placeholder="Search by email address"
+        />
+        <button
+          id="search-btn"
+          class="w-min rounded bg-blue-500 py-2 px-4 font-bold text-white hover:bg-blue-600"
+        >
+          Search
+        </button>
+      </div>
+
+      <div
+        id="download-link-container"
+        class="m-auto flex justify-center py-10"
+      ></div>
+    </form>
+
+    <script>
+      document
+        .getElementById("search-btn")
+        .addEventListener("click", function (event) {
+          event.preventDefault();
+          var email = document.getElementById("emailverification").value;
+
+          if (email) {
+            var xhr = new XMLHttpRequest();
+            xhr.open(
+              "POST",
+              "https://script.google.com/macros/s/AKfycbx0Bp4wlREnhccfzYQrGf-JmhqZhpu8_vGJkbuAT6SOiaed01pXfhpTa7iF3Erhqp-x/exec"
+            );
+            xhr.setRequestHeader(
+              "Content-type",
+              "application/x-www-form-urlencoded"
+            );
+            xhr.onload = function () {
+              if (xhr.status === 200) {
+                var downloadUrl = xhr.responseText;
+                var downloadLinkContainer = document.getElementById(
+                  "download-link-container"
+                );
+
+                // Create the download link element
+                var downloadLink = document.createElement("a");
+                downloadLink.href = downloadUrl;
+                downloadLink.textContent = "Download Invoice";
+                downloadLink.target = "_blank";
+                downloadLink.classList.add(
+                  "w-fit",
+                  "rounded",
+                  "bg-blue-500",
+                  "py-2",
+                  "px-4",
+                  "font-bold",
+                  "text-white",
+                  "hover:bg-blue-600"
+                );
+
+                // Clear the container and insert the download link
+                downloadLinkContainer.innerHTML = "";
+                downloadLinkContainer.appendChild(downloadLink);
+              } else {
+                alert("Error: " + xhr.responseText);
+              }
+            };
+            xhr.send("emailverification=" + encodeURIComponent(email));
+          }
+        });
+    </script>
+  </body>
+</html>
