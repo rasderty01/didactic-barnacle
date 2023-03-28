@@ -47,6 +47,7 @@
           <option value="Married-Visit-Visa">Married Visit Visa</option>
           <option value="Unmarried-Visit-Visa">Unmarried Visit Visa</option>
         </select>
+        </div>
       
 
         <div id="loading" class="fixed inset-0 z-50 flex justify-center items-center backdrop-blur-md" style="display: none;">
@@ -60,30 +61,30 @@
 
 
 <!-- visit visa -->
-    <div id="Visit-Visa" class="container-1 max-w-fit mx-auto px-4 py-5" style="display: none;">
+    <div id="Visit-Visa" class="container-1 mx-auto px-4 py-5 max-w-4xl bg-white-100" style="display: none;">
         <h1 class="text-2xl font-bold mb-5">Visit Visa Application</h1>
         <form id="VV" name="visa-form">
             <div class="flex flex-col gap-4">
                 <div>
-                  <label class="block font-bold text-gray-700 mb-2" for="last-name">Last Name:</label>
-                  <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="lname" name="lname" type="text" placeholder="Enter last name">
+                  <label class="block font-bold text-gray-700 mb-2" for="last-name" required>Last Name:</label>
+                  <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="lname" name="lname" type="text" placeholder="Enter last name" required>
                 </div>
                 <div>
                   <label class="block font-bold text-gray-700 mb-2" for="first-name">First Name:</label>
-                  <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fname" name="fname" type="text" placeholder="Enter first name">
+                  <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fname" name="fname" type="text" placeholder="Enter first name" required>
                 </div>
                 <div>
                   <label class="block font-bold text-gray-700 mb-2" for="email">Email:</label>
-                  <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" name="email" type="email" placeholder="Enter email">
+                  <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" name="email" type="email" placeholder="Enter email" required>
                 </div>
                 <div>
                   <label class="block font-bold text-gray-700 mb-2" for="phone-number">Phone Number (WhatsApp):</label>
-                  <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="pnumber" name="pnumber" type="text" placeholder="Enter phone number">
+                  <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="pnumber" name="pnumber" type="text" placeholder="Enter phone number" required>
                 </div>
         
                 <div class="col-span-2">
                   <label class="block font-bold text-gray-700 mb-2" for="address">Address:</label>
-                  <textarea class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="address" name="address" placeholder="Enter address"></textarea>
+                  <textarea class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="address" name="address" placeholder="Enter address" required></textarea>
                 </div>
 
                 <div class="flex flex-col">
@@ -113,12 +114,12 @@
                   </div>
                 <div>
                   <label class="block font-bold text-gray-700 mb-2" for="postal-code">Postal Code:</label>
-                  <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="pcode" name="pcode" type="text" placeholder="Enter postal code">
+                  <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="pcode" name="pcode" type="text" placeholder="Enter postal code" required>
                 </div>
             
                 <div class="mb-4">
                     <label class="block text-gray-700 text-sm font-bold mb-2">Applicant's Relationship with the Sponsor</label>
-                    <select id="relationship" name="relationship" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <select id="relationship" name="relationship" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
                         <option value="">Select an option</option>
                         <option value="Family">Family</option>
                         <option value="Partner">Partner</option>
@@ -132,11 +133,11 @@
                     <span class="text-gray-700">Did the Applicant already meet the Sponsor in person?</span>
                     <div class="mb-2">
                         <label class="inline-flex items-center">
-                            <input type="radio" class="form-radio" name="metSponsor" value="Yes">
+                            <input type="radio" class="form-radio" name="metSponsor" value="Yes" required>
                             <span class="ml-2">Yes</span>
                         </label>
                         <label class="inline-flex items-center ml-6">
-                            <input type="radio" class="form-radio" name="metSponsor" value="No">
+                            <input type="radio" class="form-radio" name="metSponsor" value="No" required>
                             <span class="ml-2">No</span>
                         </label>
                     </div>
@@ -144,7 +145,7 @@
 
                 <div class="mb-4">
                     <label class="block text-gray-700 text-sm font-bold mb-2">Applicant's Source of Income</label>
-                    <select id="applicant-income" name="applicant-income" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <select id="applicant-income" name="applicant-income" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
                         <option value="">Select an option</option>
                         <option value="Employment (more than a year)">Employment (more than a year)</option>
                         <option value="Employment (less than a year)">Employment (less than a year)</option>
@@ -155,7 +156,7 @@
 
                 <div class="mb-4">
                     <label class="block text-gray-700 text-sm font-bold mb-2">Sponsor's Source of Income</label>
-                    <select id="sponsor-income" name="sponsor-income" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <select id="sponsor-income" name="sponsor-income" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
                         <option value="">Select an option</option>
                         <option value="Pension">Pension</option>
                         <option value="Employment">Employment</option>
@@ -166,7 +167,7 @@
 
                 <div class="mb-4">
                     <label class="block text-gray-700 text-sm font-bold mb-2">Salary Range (If applying without a sponsor)</label>
-                    <input id="salary" name="salary" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="number" placeholder="Enter your salary range">
+                    <input id="salary" name="salary" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="number" placeholder="Enter your salary range" required>
                 </div>
                 <div class="col-span-2 mb-4">
                     <button class="bg-blue-500 hover:bg-blue-50 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" id="submit">Submit</button>
@@ -175,30 +176,30 @@
             </div>
         </form>
 <!-- fiance visa -->
-    <div id="Fiance-Visa" class="container-1 max-w-fit mx-auto px-4 py-5" style="display: none;">
+    <div id="Fiance-Visa" class="container-1 mx-auto px-4 py-5 max-w-4xl bg-white-100" style="display: none;">
       <h1 class="text-2xl font-bold mb-5">Fiance Visa Application</h1>
       <form id="FV" name="visa-form">
           <div class="flex flex-col gap-4">
               <div>
                 <label class="block font-bold text-gray-700 mb-2" for="last-name">Last Name:</label>
-                <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="lname" name="lname" type="text" placeholder="Enter last name">
+                <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="lname" name="lname" type="text" placeholder="Enter last name"required>
               </div>
               <div>
                 <label class="block font-bold text-gray-700 mb-2" for="first-name">First Name:</label>
-                <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fname" name="fname" type="text" placeholder="Enter first name">
+                <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fname" name="fname" type="text" placeholder="Enter first name"required>
               </div>
               <div>
                 <label class="block font-bold text-gray-700 mb-2" for="email">Email:</label>
-                <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" name="email" type="email" placeholder="Enter email">
+                <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" name="email" type="email" placeholder="Enter email"required>
               </div>
               <div>
                 <label class="block font-bold text-gray-700 mb-2" for="phone-number">Phone Number (WhatsApp):</label>
-                <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="pnumber" name="pnumber" type="text" placeholder="Enter phone number">
+                <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="pnumber" name="pnumber" type="text" placeholder="Enter phone number"required>
               </div>
       
               <div class="col-span-2">
                 <label class="block font-bold text-gray-700 mb-2" for="address">Address:</label>
-                <textarea class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="address" name="address" placeholder="Enter address"></textarea>
+                <textarea class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="address" name="address" placeholder="Enter address"required></textarea>
               </div>
               <div class="flex flex-col">
                   <label class="block font-bold text-gray-700 mb-2" for="country">Country:</label>
@@ -207,7 +208,7 @@
                     id="country2"
                     name="country"
                     onchange="handleCountryChange(event, 'otherCountryContainer2')"
-                  >
+                    required>
                     <option value="">Select a country</option>
                     <option value="Philippines">Philippines</option>
                     <option value="United Kingdom">United Kingdom</option>
@@ -227,12 +228,12 @@
                 </div>
               <div>
                 <label class="block font-bold text-gray-700 mb-2" for="postal-code">Postal Code:</label>
-                <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="pcode" name="pcode" type="text" placeholder="Enter postal code">
+                <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="pcode" name="pcode" type="text" placeholder="Enter postal code"required>
               </div>
           
               <div class="mb-4">
                   <label class="block text-gray-700 text-sm font-bold mb-2">Applicant's Marital Status</label>
-                  <select id="AMaritalStatus" name="AMaritalStatus"class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                  <select id="AMaritalStatus" name="AMaritalStatus"class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"required>
                       <option value="">Select an option</option>
                       <option value="Single">Single</option>
                       <option value="Divorce/Anulled">Divorce/Anulled</option>
@@ -244,11 +245,11 @@
                   <span class="text-gray-700">Have you met your sponsor in person?</span>
                   <div class="mt-2">
                       <label class="inline-flex items-center">
-                          <input type="radio" class="form-radio" name="metSponsor" value="Yes">
+                          <input type="radio" class="form-radio" name="metSponsor" value="Yes"required>
                           <span class="ml-2">Yes</span>
                       </label>
                       <label class="inline-flex items-center ml-6">
-                          <input type="radio" class="form-radio" name="metSponsor" value="No">
+                          <input type="radio" class="form-radio" name="metSponsor" value="No"required>
                           <span class="ml-2">No</span>
                       </label>
                   </div>
@@ -258,11 +259,11 @@
                   <span class="text-gray-700">Have you met the financial requirement of £18,600?</span>
                   <div class="mt-2">
                       <label class="inline-flex items-center">
-                          <input type="radio" class="form-radio" name="financialrequirement" value="Yes">
+                          <input type="radio" class="form-radio" name="financialrequirement" value="Yes"required>
                           <span class="ml-2">Yes</span>
                       </label>
                       <label class="inline-flex items-center ml-6">
-                          <input type="radio" class="form-radio" name="financialrequirement" value="No">
+                          <input type="radio" class="form-radio" name="financialrequirement" value="No"required>
                           <span class="ml-2">No</span>
                       </label>
                   </div>
@@ -270,7 +271,7 @@
 
               <div class="mb-4">
                   <label class="block text-gray-700 text-sm font-bold mb-2">Sponsor's Marital Status</label>
-                  <select id="SMaritalStatus" name ="SMaritalStatus" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                  <select id="SMaritalStatus" name ="SMaritalStatus" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"required>
                       <option value="">Select an option</option>
                       <option value="Single">Single</option>
                       <option value="Divorce/Anulled">Divorce/Anulled</option>
@@ -280,7 +281,7 @@
 
               <div class="mb-4">
                   <label class="block text-gray-700 text-sm font-bold mb-2">Sponsor's Source of Income</label>
-                  <select id="sponsor" name="sponsor" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                  <select id="sponsor" name="sponsor" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"required>
                       <option value="">Select an option</option>
                       <option value ="Pension">Pension</option>
                       <option value ="Employment">Employment</option>
@@ -295,40 +296,41 @@
           </div>
       </form>
 <!-- Spouse visa -->
-  <div id="Spouse-Visa" class="container-1 max-w-fit mx-auto px-4 py-5" style="display: none;">
+  <div id="Spouse-Visa" class="container-1 mx-auto px-4 py-5 max-w-4xl bg-white-100" style="display: none;">
     <h1 class="text-2xl font-bold mb-5">Spouse Visa Application</h1>
     <form id="SV" name="visa-form">
         <div class="flex flex-col gap-4">
             <div>
               <label class="block font-bold text-gray-700 mb-2" for="last-name">Last Name:</label>
-              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="lname" name="lname" type="text" placeholder="Enter last name">
+              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="lname" name="lname" type="text" placeholder="Enter last name"required>
             </div>
             <div>
               <label class="block font-bold text-gray-700 mb-2" for="first-name">First Name:</label>
-              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fname" name="fname" type="text" placeholder="Enter first name">
+              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fname" name="fname" type="text" placeholder="Enter first name"required>
             </div>
             <div>
               <label class="block font-bold text-gray-700 mb-2" for="email">Email:</label>
-              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" name="email" type="email" placeholder="Enter email">
+              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" name="email" type="email" placeholder="Enter email"required>
             </div>
             <div>
               <label class="block font-bold text-gray-700 mb-2" for="phone-number">Phone Number (WhatsApp):</label>
-              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="pnumber" name="pnumber" type="text" placeholder="Enter phone number">
+              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="pnumber" name="pnumber" type="text" placeholder="Enter phone number"required>
             </div>
     
             <div class="col-span-2">
               <label class="block font-bold text-gray-700 mb-2" for="address">Address:</label>
-              <textarea class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="address" name="address" placeholder="Enter address"></textarea>
+              <textarea class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="address" name="address" placeholder="Enter address"required></textarea>
             </div>
 
               <div class="flex flex-col">
-                  <label class="block font-bold text-gray-700 mb-2" for="country">Country:</label>
+                  <label class="block font-bold text-gray-700 mb-2" for="country"required>Country:</label>
                   <select
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     id="country3"
                     name="country"
                     onchange="handleCountryChange(event, 'otherCountryContainer3')"
-                  >
+                    required
+                    >
                     <option value="">Select a country</option>
                     <option value="Philippines">Philippines</option>
                     <option value="United Kingdom">United Kingdom</option>
@@ -349,18 +351,18 @@
 
             <div>
               <label class="block font-bold text-gray-700 mb-2" for="postal-code">Postal Code:</label>
-              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="pcode" name="pcode" type="text" placeholder="Enter postal code">
+              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="pcode" name="pcode" type="text" placeholder="Enter postal code"required>
             </div>
 
               <div class="mb-4">
                   <span class="text-gray-700">Have you met the financial requirement of £18,600?</span>
                   <div class="mt-2">
                       <label class="inline-flex items-center">
-                          <input type="radio" class="form-radio" name="financialrequirement" value="Yes">
+                          <input type="radio" class="form-radio" name="financialrequirement" value="Yes"required>
                           <span class="ml-2">Yes</span>
                       </label>
                       <label class="inline-flex items-center ml-6">
-                          <input type="radio" class="form-radio" name="financialrequirement" value="No">
+                          <input type="radio" class="form-radio" name="financialrequirement" value="No"required>
                           <span class="ml-2">No</span>
                       </label>
                   </div>
@@ -368,12 +370,12 @@
 
                 <div>
               <label class="block font-bold text-gray-700 mb-2" for="postal-code">Place of Marriage</label>
-              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="pofmarriage" name="pofmarriage" type="text" placeholder="Enter place of marriage">
+              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="pofmarriage" name="pofmarriage" type="text" placeholder="Enter place of marriage"required>
             </div>
 
               <div>
               <label class="block font-bold text-gray-700 mb-2" for="postal-code">Date of Marriage</label>
-              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="dofmarriage" name="dofmarriage" type="date" placeholder="Select Date">
+              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="dofmarriage" name="dofmarriage" type="date" placeholder="Select Date"required>
             </div>
 
 
@@ -382,7 +384,7 @@
                 <select id="sponsor-income1" 
                 onchange="benefitchange(event, 'btf')"
                 name="sponsor-income" 
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"required>
                     <option value="">Select an option</option>
                     <option value="Pension">Pension</option>
                     <option value="Employment">Employment</option>
@@ -407,38 +409,39 @@
     </form>
 </div>
 <!-- Married visa -->
-<div id="Married-Visit-Visa" class="container-1 max-w-fit mx-auto px-4 py-5" style="display: none;">
+<div id="Married-Visit-Visa" class="container-1 mx-auto px-4 py-5 max-w-4xl bg-white-100" style="display: none;">
     <h1 class="text-2xl font-bold mb-5">Married Visit Visa Application</h1>
     <form id="MV" name="visa-form">
         <div class="flex flex-col gap-4">
             <div>
               <label class="block font-bold text-gray-700 mb-2" for="last-name">Last Name:</label>
-              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="lname" name="lname" type="text" placeholder="Enter last name">
+              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="lname" name="lname" type="text" placeholder="Enter last name"required>
             </div>
             <div>
               <label class="block font-bold text-gray-700 mb-2" for="first-name">First Name:</label>
-              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fname" name="fname" type="text" placeholder="Enter first name">
+              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fname" name="fname" type="text" placeholder="Enter first name"required>
             </div>
             <div>
               <label class="block font-bold text-gray-700 mb-2" for="email">Email:</label>
-              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" name="email" type="email" placeholder="Enter email">
+              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" name="email" type="email" placeholder="Enter email"required>
             </div>
             <div>
               <label class="block font-bold text-gray-700 mb-2" for="phone-number">Phone Number (WhatsApp):</label>
-              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="pnumber" name="pnumber" type="text" placeholder="Enter phone number">
+              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="pnumber" name="pnumber" type="text" placeholder="Enter phone number"required>
             </div>
     
             <div class="col-span-2">
               <label class="block font-bold text-gray-700 mb-2" for="address">Address:</label>
-              <textarea class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="address" name="address" placeholder="Enter address"></textarea>
+              <textarea class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="address" name="address" placeholder="Enter address"required></textarea>
             </div>
             <div class="flex flex-col">
-              <label class="block font-bold text-gray-700 mb-2" for="country">Country:</label>
+              <label class="block font-bold text-gray-700 mb-2" for="country"required>Country:</label>
               <select
                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="country4"
                 name="country"
                 onchange="handleCountryChange(event, 'otherCountryContainer4')"
+                required
               >
                 <option value="">Select a country</option>
                 <option value="Philippines">Philippines</option>
@@ -463,12 +466,12 @@
 
             <div>
               <label class="block font-bold text-gray-700 mb-2" for="postal-code">Postal Code:</label>
-              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="pcode" name="pcode" type="text" placeholder="Enter postal code">
+              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="pcode" name="pcode" type="text" placeholder="Enter postal code"required>
             </div>
         
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2">Applicant's Marital Status</label>
-                <select id="AMaritalStatus" name="AMaritalStatus" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                <select id="AMaritalStatus" name="AMaritalStatus" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"required>
                     <option value="">Select an option</option>
                     <option value="Single">Single</option>
                     <option value="Divorce/Anulled">Divorce/Anulled</option>
@@ -480,11 +483,11 @@
                 <span class="text-gray-700">Have you met in person?</span>
                 <div class="mt-2">
                     <label class="inline-flex items-center">
-                        <input type="radio" class="form-radio" name="metSponsor" value="Yes">
+                        <input type="radio" class="form-radio" name="metSponsor" value="Yes"required>
                         <span class="ml-2">Yes</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio" class="form-radio" name="metSponsor" value="No">
+                        <input type="radio" class="form-radio" name="metSponsor" value="No"required>
                         <span class="ml-2">No</span>
                     </label>
                 </div>
@@ -492,7 +495,7 @@
 
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2">Applicant's Source of Income</label>
-                <select id="applicant-income" name="applicant-income" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                <select id="applicant-income" name="applicant-income" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"required>
                     <option value="">Select an option</option>
                     <option value="Employment (more than a year)">Employment (more than a year)</option>
                     <option value="Employment (less than a year)">Employment (less than a year)</option>
@@ -503,7 +506,7 @@
 
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2">Do you have strong ties?</label>
-                <select id="sties" name="sties" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                <select id="sties" name="sties" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"required>
                     <option value="">Select an option</option>
                     <option value="Family">Family</option>
                     <option value="Property">Property</option>
@@ -514,7 +517,7 @@
 
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2">Partner's Marital Status</label>
-                <select id="SMaritalStatus" name="SMaritalStatus"class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                <select id="SMaritalStatus" name="SMaritalStatus"class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"required>
                     <option value="">Select an option</option>
                     <option value="Single">Single</option>
                     <option value="Divorce/Anulled">Divorce/Anulled</option>
@@ -524,7 +527,7 @@
 
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2">Partner's Source of Income</label>
-                <select id="sponsor-income" name="sponsor-income" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                <select id="sponsor-income" name="sponsor-income" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"required>
                     <option value="">Select an option</option>
                     <option value="Pension">Pension</option>
                     <option value="Employment">Employment</option>
@@ -539,30 +542,30 @@
         </div>
     </form>
   <!-- Unmarried Visit visa -->
-<div id="Unmarried-Visit-Visa" class="container-1 max-w-fit mx-auto px-4 py-5" style="display: none;">
+<div id="Unmarried-Visit-Visa" class="container-1 mx-auto px-4 py-5 max-w-4xl bg-white-100" style="display: none;">
     <h1 class="text-2xl font-bold mb-5">Unmarried Partner Visa Application</h1>
     <form id="UMVV" name="visa-form">
         <div class="flex flex-col gap-4">
             <div>
               <label class="block font-bold text-gray-700 mb-2" for="last-name">Last Name:</label>
-              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="lname" name="lname" type="text" placeholder="Enter last name">
+              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="lname" name="lname" type="text" placeholder="Enter last name"required>
             </div>
             <div>
               <label class="block font-bold text-gray-700 mb-2" for="first-name">First Name:</label>
-              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fname" name="fname" type="text" placeholder="Enter first name">
+              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fname" name="fname" type="text" placeholder="Enter first name"required>
             </div>
             <div>
               <label class="block font-bold text-gray-700 mb-2" for="email">Email:</label>
-              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" name="email" type="email" placeholder="Enter email">
+              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" name="email" type="email" placeholder="Enter email"required>
             </div>
             <div>
               <label class="block font-bold text-gray-700 mb-2" for="phone-number">Phone Number (WhatsApp):</label>
-              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="pnumber" name="pnumber" type="text" placeholder="Enter phone number">
+              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="pnumber" name="pnumber" type="text" placeholder="Enter phone number"required>
             </div>
     
             <div class="col-span-2">
               <label class="block font-bold text-gray-700 mb-2" for="address">Address:</label>
-              <textarea class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="address" name="address" placeholder="Enter address"></textarea>
+              <textarea class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="address" name="address" placeholder="Enter address"required></textarea>
             </div>
 
             <div class="flex flex-col">
@@ -572,6 +575,7 @@
                 id="country5"
                 name="country"
                 onchange="handleCountryChange(event, 'otherCountryContainer5')"
+                required
               >
                 <option value="">Select a country</option>
                 <option value="Philippines">Philippines</option>
@@ -593,12 +597,12 @@
             
             <div>
               <label class="block font-bold text-gray-700 mb-2" for="postal-code">Postal Code:</label>
-              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="pcode" name="pcode" type="text" placeholder="Enter postal code">
+              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="pcode" name="pcode" type="text" placeholder="Enter postal code"required>
             </div>
         
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2">Applicant's Marital Status</label>
-                <select id="AMaritalStatus" name="AMaritalStatus" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                <select id="AMaritalStatus" name="AMaritalStatus" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"required>
                     <option value="">Select an option</option>
                     <option value="Single">Single</option>
                     <option value="Divorce/Anulled">Divorce/Anulled</option>
@@ -609,11 +613,11 @@
                   <span class="text-gray-700">Have you met the financial requirement of £18,600?</span>
                   <div class="mt-2">
                       <label class="inline-flex items-center">
-                          <input type="radio" class="form-radio" name="financialrequirement" value="Yes">
+                          <input type="radio" class="form-radio" name="financialrequirement" value="Yes"required>
                           <span class="ml-2">Yes</span>
                       </label>
                       <label class="inline-flex items-center ml-6">
-                          <input type="radio" class="form-radio" name="financialrequirement" value="No">
+                          <input type="radio" class="form-radio" name="financialrequirement" value="No"required>
                           <span class="ml-2">No</span>
                       </label>
                   </div>
@@ -623,11 +627,11 @@
                 <span class="text-gray-700">Have you met in person?</span>
                 <div class="mt-2">
                     <label class="inline-flex items-center">
-                        <input type="radio" class="form-radio" name="metSponsor" value="Yes">
+                        <input type="radio" class="form-radio" name="metSponsor" value="Yes"required>
                         <span class="ml-2">Yes</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio" class="form-radio" name="metSponsor" value="No">
+                        <input type="radio" class="form-radio" name="metSponsor" value="No"required>
                         <span class="ml-2">No</span>
                     </label>
                 </div>
@@ -637,11 +641,11 @@
                 <span class="text-gray-700">Have you lived together (cohabitate) for more than 2 years?</span>
                 <div class="mt-2">
                     <label class="inline-flex items-center">
-                        <input type="radio" class="form-radio" name="lived" value="Yes">
+                        <input type="radio" class="form-radio" name="lived" value="Yes"required>
                         <span class="ml-2">Yes</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio" class="form-radio" name="lived" value="No">
+                        <input type="radio" class="form-radio" name="lived" value="No"required>
                         <span class="ml-2">No</span>
                     </label>
                 </div>
@@ -649,7 +653,7 @@
 
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2">Sponsor's Marital Status</label>
-                <select id="SMaritalStatus" name="SMaritalStatus" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                <select id="SMaritalStatus" name="SMaritalStatus" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"required>
                     <option value="">Select an option</option>
                     <option value="Single">Single</option>
                     <option value="Divorce/Anulled">Divorce/Anulled</option>
@@ -659,7 +663,7 @@
 
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2">Sponsor's Source of Income</label>
-                <select id="sponsor-income" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                <select id="sponsor-income" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"required>
                     <option value="Pension">Pension</option>
                     <option value="Employment">Employment</option>
                     <option value="Business/Self-employed">Business/Self-employed</option>

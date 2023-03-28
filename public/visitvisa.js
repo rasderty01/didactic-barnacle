@@ -9,11 +9,45 @@ document.addEventListener("DOMContentLoaded", function () {
   var form5 = document.getElementById("UMVV"); //unmarriedvisa
 
   // Bind validation function to the form submit event
-  form1.addEventListener("submit", validateForm1); //visitvisafunction
-  form2.addEventListener("submit", valdiateForm2); //fiancevisafunction
-  form3.addEventListener("submit", validateForm3); //spousevisafunction
-  form4.addEventListener("submit", valdiateForm4); //marriedvisitvisafunc
-  form5.addEventListener("submit", valdiateForm5); //unmarriedvisafunc
+  form1.addEventListener("submit", function (event) {
+    if (!form1.checkValidity()) {
+      event.preventDefault(); // Prevent form submission if not valid
+    } else {
+      validateForm1(event); // Call validateForm1 if the form is valid
+    }
+  });
+
+  form2.addEventListener("submit", function (event) {
+    if (!form2.checkValidity()) {
+      event.preventDefault(); // Prevent form submission if not valid
+    } else {
+      validateForm2(event); // Call validateForm2 if the form is valid
+    }
+  });
+
+  form3.addEventListener("submit", function (event) {
+    if (!form3.checkValidity()) {
+      event.preventDefault(); // Prevent form submission if not valid
+    } else {
+      validateForm3(event); // Call validateForm3 if the form is valid
+    }
+  });
+
+  form4.addEventListener("submit", function (event) {
+    if (!form4.checkValidity()) {
+      event.preventDefault(); // Prevent form submission if not valid
+    } else {
+      validateForm4(event); // Call validateForm4 if the form is valid
+    }
+  });
+
+  form5.addEventListener("submit", function (event) {
+    if (!form5.checkValidity()) {
+      event.preventDefault(); // Prevent form submission if not valid
+    } else {
+      validateForm5(event); // Call validateForm5 if the form is valid
+    }
+  });
 
   //visitvisafunction
   function validateForm1(e) {
