@@ -8,6 +8,13 @@
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.17/dist/tailwind.min.css"
       rel="stylesheet"
     />
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+      integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
   </head>
   <body>
     <form>
@@ -226,6 +233,8 @@
         </div>
       </form>
     </div>
+
+    <!-- download invoice -->
     <script>
       document
         .getElementById("search-btn")
@@ -242,7 +251,7 @@
             var xhr = new XMLHttpRequest();
             xhr.open(
               "POST",
-              "https://script.google.com/macros/s/AKfycbwwFl_rclzTklR09Oi_HKX8GJ5u3fFZVhP1El0qdGNZYG_HVctwfqMMi9dwwadch0Ra/exec"
+              "https://script.google.com/macros/s/AKfycbwgRpP2HGwl6nmhAouY7_aYqynyH6-0wwsl2V0kiNbr5P7dZpzndnt4VLutvZxPxOwekg/exec"
             );
             xhr.setRequestHeader(
               "Content-type",
@@ -303,55 +312,62 @@
     </script>
 
     <script>
+      function preventFormSubmit() {
+        var forms = document.querySelectorAll("form");
+        for (var i = 0; i < forms.length; i++) {
+          forms[i].addEventListener("submit", function (event) {
+            event.preventDefault();
+          });
+        }
+      }
+      window.addEventListener("load", preventFormSubmit);
+
       document
-        .getElementById("submit")
-        .addEventListener("click", function (event) {
-          event.preventDefault();
-          var fileInput = document.getElementById("uploadedFile");
-          var emailInput = document.getElementById("hidden-email");
+        .getElementById("upload-form")
+        .addEventListener("submit", handleFormSubmit);
 
-          if (fileInput.files.length === 0) {
-            alert("Please select a file to upload.");
-            return;
-          }
+      function handleFormSubmit(event) {
+        event.preventDefault();
 
-          var spinner = document.getElementById("spinner1");
-
-          // Show the spinner
-          spinner.style.display = "block";
-
-          var xhr = new XMLHttpRequest();
-          xhr.open(
-            "POST",
-            "https://script.google.com/macros/s/AKfycbwcs7fCVzzIfuG8wTsLcH8_LjIbMlDTHTco4tVGhehiQLlIvt1D2bS__Vd7tXPoFxf7/exec"
-          );
-
-          xhr.onload = function () {
-            // Hide the spinner
-            spinner.style.display = "none";
-
-            if (xhr.status === 200) {
-              var response = JSON.parse(xhr.responseText);
-              console.log(response);
-              alert(
-                response.message +
-                  " " +
-                  '<a href="' +
-                  response.url +
-                  '" target="_blank">View the file</a>'
-              );
-            } else {
-              alert("Error: " + xhr.responseText);
-            }
+        var uploadedFile = document.getElementById("uploadedFile").files[0];
+        var reader = new FileReader();
+        reader.onloadend = function (e) {
+          var fileData = {
+            data: e.target.result,
+            name: uploadedFile.name,
           };
+          sendFormDataToAppsScript(fileData);
+        };
+        reader.readAsDataURL(uploadedFile);
+      }
 
-          // Use FormData to send the file and email
-          var formData = new FormData();
-          formData.append("uploadedFile", fileInput.files[0]);
-          formData.append("email", emailInput.value);
+      function sendFormDataToAppsScript(fileData) {
+        fetch(
+          "https://script.google.com/macros/s/AKfycbylXZ5W1tdF9ueu1qmmROqpv6k5kD2TPV_BORc5RcQ09mlrKxAjcWBMsV2PfSK5v6xN_A/exec",
+          {
+            method: "POST",
+            body: JSON.stringify(fileData),
+          }
+        )
+          .then((response) => response.text())
+          .then((responseText) => {
+            success();
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      }
 
-          xhr.send(formData);
+      function success() {
+        document.getElementById("upload-form").reset();
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Proof-of-Payment Sent!",
+          showConfirmButton: false,
+          timer: 1500,
         });
+      }
     </script>
   </body>
 </html>
