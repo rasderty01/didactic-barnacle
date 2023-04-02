@@ -34,6 +34,18 @@
 
 <div id="form_alerts">
 
+    <div id="floating-alert" class="fixed inset-0 flex items-center justify-center mx-auto bg-white rounded-md shadow-md bg-opacity-80 bg-gray-900 hidden">
+      <div class="p-4">
+        <p class="font-semibold text-red-500" id="floating-alert-title"></p>
+        <p class="text-white" id="floating-alert-message"></p>
+      </div>
+      <button class="absolute top-0 right-0 p-4 hover:bg-gray-500" id="floating-alert-close">
+        <svg class="w-4 h-4 text-white fill-current" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M10 8.586l3.293-3.293a1 1 0 011.414 1.414L11.414 10l3.293 3.293a1 1 0 01-1.414 1.414L10 11.414l-3.293 3.293a1 1 0 01-1.414-1.414L8.586 10 5.293 6.707a1 1 0 011.414-1.414L10 8.586z" clip-rule="evenodd"/>
+        </svg>
+      </button>
+    </div>
+
 <body class="font-sans font-montserrat font-open-sans">
     <!-- visit visa main -->
     
@@ -173,7 +185,7 @@
                     <button class="bg-blue-500 hover:bg-blue-50 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" id="submit">Submit</button>
                   </div>
                 </div>
-            </div>
+          </div>
         </form>
 <!-- fiance visa -->
     <div id="Fiance-Visa" class="container-1 mx-auto px-4 py-5 max-w-4xl bg-white-100" style="display: none;">
@@ -808,7 +820,12 @@ document.addEventListener("DOMContentLoaded", function () {
           if (response.ok) {
             formAlerts.innerHTML =
               "<div class='bg-green-100 border-2 border-green-400 text-green-700 px-4 py-3 rounded relative' role='alert'>Sent Successfully.</div>";
-          } else {
+
+                    setTimeout(function() {
+        window.location.href = 'http://localhost:3000/consultation.html';
+      }, 5000);
+
+            } else {
             formAlerts.innerHTML =
               "<div class='alert alert-danger'>Error: " +
               response.statusText +
@@ -910,7 +927,10 @@ document.addEventListener("DOMContentLoaded", function () {
           if (response.ok) {
             formAlerts.innerHTML =
               "<div class='bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative' role='alert'>Sent Successfully.</div>";
-          } else {
+           setTimeout(function() {
+        window.location.href = 'http://localhost:3000/consultation.html';
+      }, 5000);
+            } else {
             formAlerts.innerHTML =
               "<div class='alert alert-danger'>Error: " +
               response.statusText +
@@ -990,7 +1010,10 @@ document.addEventListener("DOMContentLoaded", function () {
           if (response.ok) {
             formAlerts.innerHTML =
               "<div class='bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative' role='alert'>Sent Successfully.</div>";
-          } else {
+          setTimeout(function() {
+        window.location.href = 'http://localhost:3000/consultation.html';
+      }, 5000);
+            } else {
             formAlerts.innerHTML =
               "<div class='alert alert-danger'>Error: " +
               response.statusText +
@@ -1080,7 +1103,10 @@ document.addEventListener("DOMContentLoaded", function () {
           if (response.ok) {
             formAlerts.innerHTML =
               "<div class='bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative' role='alert'>Sent Successfully.</div>";
-          } else {
+          setTimeout(function() {
+        window.location.href = 'http://localhost:3000/consultation.html';
+      }, 5000);
+            } else {
             formAlerts.innerHTML =
               "<div class='alert alert-danger'>Error: " +
               response.statusText +
@@ -1171,7 +1197,10 @@ document.addEventListener("DOMContentLoaded", function () {
           if (response.ok) {
             formAlerts.innerHTML =
               "<div class='bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative' role='alert'>Sent Successfully.</div>";
-          } else {
+          setTimeout(function() {
+        window.location.href = 'http://localhost:3000/consultation.html';
+      }, 5000);
+            } else {
             formAlerts.innerHTML =
               "<div class='alert alert-danger'>Error: " +
               response.statusText +

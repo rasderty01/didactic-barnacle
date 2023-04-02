@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -8,22 +8,30 @@
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.17/dist/tailwind.min.css"
       rel="stylesheet"
     />
-    <title>One-Time Consultation</title>
-  </head>
 
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+      integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
   <body>
-    <div class="my-10 flex flex-col justify-center">
-      <h2 class="m-auto flex px-2 py-2 font-sans text-3xl font-bold text-black">
-        One-Time Consultation
-      </h2>
-      <form>
-        <div class="m-auto flex justify-center py-10">
+    <form>
+      <div class="m-auto flex w-1/2 flex-col justify-center py-10">
+        <label
+          class="mb-2 block flex justify-center py-5 text-2xl font-bold text-gray-700"
+        >
+          Enter your Registered Email Address
+        </label>
+        <div class="flex justify-center">
           <input
             id="emailverification"
             name="emailverification"
             type="text"
-            class="mr-2 w-min border-2 border-black py-2 px-4"
-            placeholder="Search by email address"
+            class="mr-2 flex w-min border-2 border-black py-2 px-4 focus:border-blue-500 focus:outline-none"
+            placeholder="Enter your email address"
+            required
           />
           <button
             id="search-btn"
@@ -32,37 +40,111 @@
             Search
           </button>
         </div>
-      </form>
-      <div class="mx-auto flex flex-col">
-        <!-- Add a table to display the data -->
-        <table class="w-fit border-collapse border border-gray-400">
-          <thead>
-            <tr>
-              <th class="border border-gray-400 p-2">Name</th>
-              <th class="border border-gray-400 p-2">Email</th>
-              <th class="border border-gray-400 p-2">Phone</th>
-              <th class="border border-gray-400 p-2">Address</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="border border-gray-400 p-2">John Doe</td>
-              <td class="border border-gray-400 p-2">johndoe@example.com</td>
-              <td class="border border-gray-400 p-2">555-1234</td>
-              <td class="border border-gray-400 p-2">123 Main St</td>
-            </tr>
-            <tr>
-              <td class="border border-gray-400 p-2">Jane Smith</td>
-              <td class="border border-gray-400 p-2">janesmith@example.com</td>
-              <td class="border border-gray-400 p-2">555-5678</td>
-              <td class="border border-gray-400 p-2">456 Elm St</td>
-            </tr>
-          </tbody>
-        </table>
       </div>
 
-      <form class="mx-auto my-5 flex flex-col border-black p-10">
-        <input id="file-input" class="my-5 cursor-pointer" type="file" />
+      <div id="email-not-found" style="display: none">Email not found</div>
+
+      <div
+        id="download-link-container"
+        class="m-auto flex justify-center py-10"
+      >
+        <div id="spinner" class="spinner hidden">
+          <div class="relative inline-block">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              style="
+                margin: auto;
+                background: none;
+                display: block;
+                shape-rendering: auto;
+              "
+              width="58px"
+              height="58px"
+              viewBox="0 0 100 100"
+              preserveAspectRatio="xMidYMid"
+            >
+              <circle
+                cx="50"
+                cy="50"
+                r="0"
+                fill="none"
+                stroke="#0c7ae9"
+                stroke-width="3"
+              >
+                <animate
+                  attributeName="r"
+                  repeatCount="indefinite"
+                  dur="1s"
+                  values="0;33"
+                  keyTimes="0;1"
+                  keySplines="0 0.2 0.8 1"
+                  calcMode="spline"
+                  begin="0s"
+                />
+                <animate
+                  attributeName="opacity"
+                  repeatCount="indefinite"
+                  dur="1s"
+                  values="1;0"
+                  keyTimes="0;1"
+                  keySplines="0.2 0 0.8 1"
+                  calcMode="spline"
+                  begin="0s"
+                />
+              </circle>
+              <circle
+                cx="50"
+                cy="50"
+                r="0"
+                fill="none"
+                stroke="#46dff0"
+                stroke-width="3"
+              >
+                <animate
+                  attributeName="r"
+                  repeatCount="indefinite"
+                  dur="1s"
+                  values="0;33"
+                  keyTimes="0;1"
+                  keySplines="0 0.2 0.8 1"
+                  calcMode="spline"
+                  begin="-0.5s"
+                />
+                <animate
+                  attributeName="opacity"
+                  repeatCount="indefinite"
+                  dur="1s"
+                  values="1;0"
+                  keyTimes="0;1"
+                  keySplines="0.2 0 0.8 1"
+                  calcMode="spline"
+                  begin="-0.5s"
+                />
+              </circle>
+              <!-- [ldio] generated by https://loading.io/ -->
+            </svg>
+          </div>
+        </div>
+      </div>
+    </form>
+    <div
+      id="upload"
+      style="display: none"
+      class="mx-auto my-5 flex w-min flex-col border-2 border-black p-10"
+    >
+      <form id="upload-form" enctype="multipart/form-data">
+        <label class="mb-2 block text-2xl font-bold text-gray-700"
+          >Upload your Proof of Payment</label
+        >
+        <input type="hidden" id="hidden-email" name="hidden-email" />
+        <input
+          type="file"
+          id="uploadedFile"
+          name="uploadedFile"
+          required
+          class="my-5 cursor-pointer"
+        />
 
         <button
           id="submit"
@@ -71,7 +153,221 @@
         >
           Submit
         </button>
+        <div id="spinner1" class="spinner hidden">
+          <div class="relative inline-block">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              style="
+                margin: auto;
+                background: none;
+                display: block;
+                shape-rendering: auto;
+              "
+              width="58px"
+              height="58px"
+              viewBox="0 0 100 100"
+              preserveAspectRatio="xMidYMid"
+            >
+              <circle
+                cx="50"
+                cy="50"
+                r="0"
+                fill="none"
+                stroke="#0c7ae9"
+                stroke-width="3"
+              >
+                <animate
+                  attributeName="r"
+                  repeatCount="indefinite"
+                  dur="1s"
+                  values="0;33"
+                  keyTimes="0;1"
+                  keySplines="0 0.2 0.8 1"
+                  calcMode="spline"
+                  begin="0s"
+                />
+                <animate
+                  attributeName="opacity"
+                  repeatCount="indefinite"
+                  dur="1s"
+                  values="1;0"
+                  keyTimes="0;1"
+                  keySplines="0.2 0 0.8 1"
+                  calcMode="spline"
+                  begin="0s"
+                />
+              </circle>
+              <circle
+                cx="50"
+                cy="50"
+                r="0"
+                fill="none"
+                stroke="#46dff0"
+                stroke-width="3"
+              >
+                <animate
+                  attributeName="r"
+                  repeatCount="indefinite"
+                  dur="1s"
+                  values="0;33"
+                  keyTimes="0;1"
+                  keySplines="0 0.2 0.8 1"
+                  calcMode="spline"
+                  begin="-0.5s"
+                />
+                <animate
+                  attributeName="opacity"
+                  repeatCount="indefinite"
+                  dur="1s"
+                  values="1;0"
+                  keyTimes="0;1"
+                  keySplines="0.2 0 0.8 1"
+                  calcMode="spline"
+                  begin="-0.5s"
+                />
+              </circle>
+              <!-- [ldio] generated by https://loading.io/ -->
+            </svg>
+          </div>
+        </div>
       </form>
     </div>
+
+    <!-- download invoice -->
+    <script>
+      document
+        .getElementById("search-btn")
+        .addEventListener("click", function (event) {
+          event.preventDefault();
+          var email = document.getElementById("emailverification").value;
+          var spinner = document.getElementById("spinner");
+          var upload = document.getElementById("upload");
+
+          if (email) {
+            // Show the spinner
+            spinner.style.display = "block";
+
+            var xhr = new XMLHttpRequest();
+            xhr.open(
+              "POST",
+              "https://script.google.com/macros/s/AKfycbwgRpP2HGwl6nmhAouY7_aYqynyH6-0wwsl2V0kiNbr5P7dZpzndnt4VLutvZxPxOwekg/exec"
+            );
+            xhr.setRequestHeader(
+              "Content-type",
+              "application/x-www-form-urlencoded"
+            );
+            xhr.onload = function () {
+              // Hide the spinner
+              spinner.style.display = "none";
+              upload.style.display = "block";
+
+              if (xhr.status === 200) {
+                var responseText = xhr.responseText;
+                console.log(responseText);
+
+                if (
+                  responseText.startsWith(
+                    "Error: Email not found in any sheet: "
+                  )
+                ) {
+                  alert(
+                    "Email not found. Please try again with a valid email."
+                  );
+                } else {
+                  var downloadUrl = responseText;
+                  var downloadLinkContainer = document.getElementById(
+                    "download-link-container"
+                  );
+
+                  // Create the download link element
+                  var downloadLink = document.createElement("a");
+                  downloadLink.href = downloadUrl;
+                  downloadLink.textContent = "Download Invoice";
+                  downloadLink.target = "_blank";
+                  downloadLink.classList.add(
+                    "w-fit",
+                    "rounded",
+                    "bg-blue-500",
+                    "py-2",
+                    "px-4",
+                    "font-bold",
+                    "text-white",
+                    "hover:bg-blue-600"
+                  );
+
+                  // Clear the container and insert the download link
+                  downloadLinkContainer.innerHTML = "";
+                  downloadLinkContainer.appendChild(downloadLink);
+
+                  document.getElementById("hidden-email").value = email;
+                }
+              } else {
+                alert("Error: " + xhr.responseText);
+              }
+            };
+            xhr.send("emailverification=" + encodeURIComponent(email));
+          }
+        });
+    </script>
+
+    <script>
+      function preventFormSubmit() {
+        var forms = document.querySelectorAll("form");
+        for (var i = 0; i < forms.length; i++) {
+          forms[i].addEventListener("submit", function (event) {
+            event.preventDefault();
+          });
+        }
+      }
+      window.addEventListener("load", preventFormSubmit);
+
+      document
+        .getElementById("upload-form")
+        .addEventListener("submit", handleFormSubmit);
+
+      function handleFormSubmit(event) {
+        event.preventDefault();
+
+        var uploadedFile = document.getElementById("uploadedFile").files[0];
+        var reader = new FileReader();
+        reader.onloadend = function (e) {
+          var fileData = {
+            data: e.target.result,
+            name: uploadedFile.name,
+          };
+          sendFormDataToAppsScript(fileData);
+        };
+        reader.readAsDataURL(uploadedFile);
+      }
+
+      function sendFormDataToAppsScript(fileData) {
+        fetch(
+          "https://script.google.com/macros/s/AKfycbylXZ5W1tdF9ueu1qmmROqpv6k5kD2TPV_BORc5RcQ09mlrKxAjcWBMsV2PfSK5v6xN_A/exec",
+          {
+            method: "POST",
+            body: JSON.stringify(fileData),
+          }
+        )
+          .then((response) => response.text())
+          .then((responseText) => {
+            success();
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      }
+
+      function success() {
+        document.getElementById("upload-form").reset();
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Proof-of-Payment Sent!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    </script>
   </body>
 </html>

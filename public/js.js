@@ -59,7 +59,6 @@ document.addEventListener("DOMContentLoaded", function () {
         "Based on your current circumstances, we may not be able to assist you with your application for a visit visa. If you do not have a sponsor, we recommend that you meet the following criteria:\n\n- You have been employed for more than a year.\n- Your income (minus monthly expenses) can cover the cost of your trip to the United Kingdom, which is estimated to be at least £2,000.\n\nIf your circumstances change, we would be happy to assist you, and you are free to fill out the eligibility assessment form again."
       );
     } else if (metSponsor === "No") {
-      console.log(metSponsor);
       eligibility = false;
       showSweetAlert(
         "Not Eligible\n",
@@ -143,7 +142,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  //fiancevisafunc
   function validateForm2(e) {
     // Prevent the default form submission
     e.preventDefault();
@@ -168,29 +166,43 @@ document.addEventListener("DOMContentLoaded", function () {
     const metSponsor = document.querySelector(
       'input[name="metSponsor"]:checked'
     ).value;
-    const eligibility =
-      metSponsor === "Yes" &&
-      financialrequirement === "Yes" &&
-      (amrital === "Single" || amrital === "Divorce/Anulled") &&
-      (smrital === "Single" || smrital === "Divorce/Anulled") &&
-      (sponsor === "Employment" ||
-        sponsor === "Pension" ||
-        sponsor === "Business");
+    var eligibility = true;
 
-    console.log(
-      metSponsor,
-      sponsor,
-      lname,
-      fname,
-      email,
-      pnumber,
-      address,
-      pcode,
-      amrital,
-      smrital
-    );
+    if (smrital === "Married") {
+      eligibility = false;
+      showSweetAlert(
+        "Not Eligible:\n\n",
+        "We regret to inform you that due to your sponsor's marital status, you are not eligible to proceed with this process at this time. We apologize for any inconvenience this may cause."
+      );
+    } else if (metSponsor === "No") {
+      eligibility = false;
+      showSweetAlert(
+        "Not Eligible\n",
+        "Although it is still possible to proceed with the application, there is a high risk of the Home Office questioning the genuineness of your relationship if you have not met your sponsor in person."
+      );
+    } else if (amrital === "Married") {
+      eligibility = false;
+      showSweetAlert(
+        "Not Eligible\n",
+        "We regret to inform you that due to your marital status, you are not eligible to proceed with this process at this time. We apologize for any inconvenience this may cause."
+      );
+    } else if (sponsor === "On Benefits") {
+      eligibility = false;
+      showSweetAlert(
+        "Not Eligible\n",
+        "We're sorry, but it looks like you've indicated that you receive benefits as your source of income. Unfortunately, we are unable to proceed with your application at this time."
+      );
+    } else if (financialrequirement === "No") {
+      eligibility = false;
+      showSweetAlert(
+        "Not Eligible\n",
+        "We're sorry, but it looks like you've indicated that you do not meet the financial requirement for this application. Unfortunately, we are unable to proceed with your application at this time."
+      );
+    } else {
+      AppendData();
+    }
 
-    if (eligibility) {
+    function AppendData() {
       const visaType = document.getElementById("choosevisatype").value;
 
       // Create a FormData object and append the form data
@@ -286,11 +298,18 @@ document.addEventListener("DOMContentLoaded", function () {
     // Perform validation for Form 3
     const formAlerts = document.getElementById("form_alerts");
 
-    const eligibility = financialrequirement === "Yes";
+    var eligibility = true;
+    if (financialrequirement === "No") {
+      eligibility = false;
+      showSweetAlert(
+        "Not Eligible:\n\n",
+        "We're sorry, but it looks like you've indicated that you do not meet the financial requirement for this application. Unfortunately, we are unable to proceed with your application at this time."
+      );
+    } else {
+      AppendData();
+    }
 
-    console.log(eligibility);
-
-    if (eligibility) {
+    function AppendData() {
       const visaType = document.getElementById("choosevisatype").value;
 
       // Create a FormData object and append the form data
@@ -387,17 +406,46 @@ document.addEventListener("DOMContentLoaded", function () {
     const sponsorSourceOfIncome = married.elements["sponsor-income"].value;
     const applicantSourceOfIncome = married.elements["applicant-income"].value;
 
-    const eligibility =
-      metSponsor === "Yes" &&
-      (amrital === "Single" || amrital === "Divorce/Anulled") &&
-      (smrital === "Single" || smrital === "Divorce/Anulled") &&
-      (sponsorSourceOfIncome === "Employment" ||
-        sponsorSourceOfIncome === "Pension" ||
-        sponsorSourceOfIncome === "Business") &&
-      (applicantSourceOfIncome === "Business (more than a year)" ||
-        applicantSourceOfIncome === "Employment (more than a year)");
+    var eligibility = true;
 
-    if (eligibility) {
+    if (smrital === "Married") {
+      eligibility = false;
+      showSweetAlert(
+        "Not Eligible:\n\n",
+        "We regret to inform you that due to your sponsor's marital status, you are not eligible to proceed with this process at this time. We apologize for any inconvenience this may cause."
+      );
+    } else if (metSponsor === "No") {
+      eligibility = false;
+      showSweetAlert(
+        "Not Eligible\n",
+        "Although it is still possible to proceed with the application, there is a high risk of the Home Office questioning the genuineness of your relationship if you have not met your sponsor in person."
+      );
+    } else if (amrital === "Married") {
+      eligibility = false;
+      showSweetAlert(
+        "Not Eligible\n",
+        "We regret to inform you that due to your marital status, you are not eligible to proceed with this process at this time. We apologize for any inconvenience this may cause."
+      );
+    } else if (sponsorSourceOfIncome === "On Benefits") {
+      eligibility = false;
+      showSweetAlert(
+        "Not Eligible\n",
+        "We're sorry, but it looks like you've indicated that you receive benefits as your source of income. Unfortunately, we are unable to proceed with your application at this time."
+      );
+    } else if (
+      applicantSourceOfIncome === "Business (less than a year)" ||
+      applicantSourceOfIncome === "Employment (less than a year)"
+    ) {
+      eligibility = false;
+      showSweetAlert(
+        "Not Eligible\n",
+        "We apologize for the inconvenience, but it appears that you have indicated that your source of income from employment or business is less than a year. Regrettably, we cannot proceed with your application as we require a minimum of one year of continuous income to be considered."
+      );
+    } else {
+      AppendData();
+    }
+
+    function AppendData() {
       const visaType = document.getElementById("choosevisatype").value;
 
       // Create a FormData object and append the form data
@@ -496,18 +544,37 @@ document.addEventListener("DOMContentLoaded", function () {
     ).value;
     const lived = document.querySelector('input[name="lived"]:checked').value;
     const sponsorSourceOfIncome = umarried.elements["sponsor-income"].value;
-    const eligibility =
-      financialrequirement === "Yes" &&
-      lived === "Yes" &&
-      metSponsor === "Yes" &&
-      (sponsorSourceOfIncome === "Employment" ||
-        sponsorSourceOfIncome === "Pension" ||
-        sponsorSourceOfIncome === "Business" ||
-        sponsorSourceOfIncome === "On Benefits");
+    var eligibility = true;
 
-    console.log(metSponsor, eligibility, lived, sponsorSourceOfIncome);
+    if (lived === "No") {
+      eligibility = false;
+      showSweetAlert(
+        "Not Eligible:\n\n",
+        "We're sorry, but it looks like you've indicated that you and your partner have not lived together for a minimum of 2 years. Unfortunately, we require a minimum of 2 years of continuous cohabitation to be considered for this application."
+      );
+    } else if (metSponsor === "No") {
+      eligibility = false;
+      showSweetAlert(
+        "Not Eligible\n",
+        "Although it is still possible to proceed with the application, there is a high risk of the Home Office questioning the genuineness of your relationship if you have not met your sponsor in person."
+      );
+    } else if (amrital === "Married") {
+      eligibility = false;
+      showSweetAlert(
+        "Not Eligible\n",
+        "We regret to inform you that due to your marital status, you are not eligible to proceed with this process at this time. We apologize for any inconvenience this may cause."
+      );
+    } else if (financialrequirement === "No") {
+      eligibility = false;
+      showSweetAlert(
+        "Not Eligible:\n\n",
+        "We're sorry, but it looks like you've indicated that you do not meet the financial requirement for this application. Unfortunately, we are unable to proceed with your application at this time."
+      );
+    } else {
+      AppendData();
+    }
 
-    if (eligibility) {
+    function AppendData() {
       const visaType = document.getElementById("choosevisatype").value;
 
       // Create a FormData object and append the form data
@@ -581,25 +648,25 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
   }
-});
 
-function showSweetAlert(title, message) {
-  Swal.fire({
-    html: `
+  function showSweetAlert(title, message) {
+    Swal.fire({
+      html: `
       <div class="space-y-2">
         <p class="font-semibold text-red-500">${title}</p>
-        <p class="text-white whitespace-pre-line text-left">${message}</p>
+        <p class="text-white whitespace-pre-line text-justify">${message}</p>
       </div>`,
-    icon: "error", // Change this to 'success', 'warning', or 'info' based on the desired appearance
-    confirmButtonText: "Close",
-    background: "rgba(0, 0, 0, 0.5)",
-    customClass: {
-      container: "bg-gray-900 bg-opacity-80",
-      popup: "rounded-md shadow-md p-4",
-      actions: "mt-4",
-    },
-  });
-}
+      icon: "error", // Change this to 'success', 'warning', or 'info' based on the desired appearance
+      confirmButtonText: "Close",
+      background: "rgba(0, 0, 0, 0.5)",
+      customClass: {
+        container: "bg-gray-900 bg-opacity-80",
+        popup: "rounded-md shadow-md p-4",
+        actions: "mt-4",
+      },
+    });
+  }
+});
 
 function handleCountryChange(event, containerId) {
   const countrySelect = event.target;
@@ -611,7 +678,6 @@ function handleCountryChange(event, containerId) {
     otherCountryContainer.classList.add("hidden");
   }
 }
-
 function benefitchange(event, containerId) {
   const countrySelect1 = event.target;
   const otherCountryContainer1 = document.getElementById(containerId);
